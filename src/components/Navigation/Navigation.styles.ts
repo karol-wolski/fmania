@@ -24,7 +24,7 @@ export const Nav = styled.div`
 `
 
 export const NavWrapper = styled.nav`
-  max-width: 114rem;
+  max-width: 117rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@ export const NavList = styled.ul<NavListProps>`
   display: ${props => (props.isOpen ? 'flex' : 'none')};
   position: fixed;
   width: 100%;
-  height: calc(100vh - 5.2rem);
+  height: calc(100vh - 5rem);
   flex-direction: column;
   align-items: center;
   list-style: none;

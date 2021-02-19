@@ -8,12 +8,16 @@ type ButtonProps = {
 }
 
 export const Btn = styled.button<ButtonProps>`
-  padding: 1.15rem 3rem;
+  padding: 1rem 1.5rem;
   font-size: 1.4rem;
   font-weight: 700;
   cursor: pointer;
   border: none;
   border-radius: 0.5rem;
+
+  @media (min-width: 360px) {
+    padding: 1.15rem 3rem;
+  }
 
   ${props =>
     props.kind === 'contain' &&

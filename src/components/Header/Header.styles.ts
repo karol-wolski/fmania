@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.div`
-  max-width: 114rem;
+  max-width: 117rem;
   margin: 3rem auto;
   padding: 0 1.5rem;
   display: flex;
@@ -31,7 +31,7 @@ export const ButtonsWrapper = styled.div`
 
 export const Form = styled.form`
   position: relative;
-  width: calc(100% - 144px - 213px);
+  width: calc(100% - 14.5rem - 24.5rem); // !00% - image - buttons
   margin-left: 1.5rem;
 
   @media (max-width: 767px) {
