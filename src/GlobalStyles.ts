@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
   ${styledNormalize}
 
   * {
@@ -40,5 +41,18 @@ export default createGlobalStyle`
     overflow: hidden;
     clip: rect(0,0,0,0);
     border: 0;
+  }
+
+  .slick-dots li button:before {
+    color: #fff;  
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: #fff;
+    font-size: 8px;
+  }
+
+  .slick-dots {
+    bottom: 1.5rem;
   }
 `
