@@ -55,4 +55,45 @@ export default createGlobalStyle`
   .slick-dots {
     bottom: 1.5rem;
   }
+
+  .products-slider .slick-prev, .slick-next {
+    top: -45px;
+    color: black;
+    border: 1px solid silver;
+    width: 25px;
+    height: 25px;
+    color: black;
+  }
+
+  .products-slider .slick-prev {
+    right: 30px;
+    left: unset;
+  }
+
+  .products-slider .slick-next {
+    right: 0;
+  }
+
+  .products-slider .slick-prev:before, .slick-next:before {
+    font-family: unset;
+    color: black;
+  }
+
+  .products-slider .slick-next:before {
+    content: '>';
+  }
+
+  .products-slider .slick-prev:before {
+    content: '<';
+  }
+
+  .products-slider .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
+    border-color: black;
+    background: black;
+  }
+
+   .products-slider .slick-prev:hover:before, .slick-next:hover:before, .slick-prev:focus:before, .slick-next:focus:before {
+    color: white;
+
+   }
 `
