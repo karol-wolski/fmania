@@ -17,7 +17,7 @@ const Slide: React.FC<SlideProps> = ({ title, subtitle, link, imgLink }) => {
         <Desc>
           <Title>{title}</Title>
           <SubTitle>{subtitle}</SubTitle>
-          <LinkBtn kind="contain" category="secondary" href={link}>
+          <LinkBtn kind="contain" category="secondary" to={link}>
             View Products
           </LinkBtn>
         </Desc>

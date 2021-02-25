@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { Colors } from '../Colors'
 const { white100: secondary, black100: primary, blue200: accent, grey300: border } = Colors
 
 type ButtonProps = {
   kind: 'outline' | 'contain'
-  category: 'primary' | 'secondary'
+  category: 'primary' | 'secondary' | 'tertiary'
 }
 
-export const LinkBtn = styled.a<ButtonProps>`
+export const LinkBtn = styled(Link)<ButtonProps>`
   padding: 1rem 1.5rem;
   font-size: 1.2rem;
   font-weight: 500;
@@ -44,9 +45,9 @@ export const LinkBtn = styled.a<ButtonProps>`
       color: ${secondary};
 
       &:hover {
-        border: 2px solid ${secondary};
+        border: 2px solid ${accent};
         background-color: transparent;
-        color: ${secondary};
+        color: ${accent};
       }
     `}
 
@@ -80,6 +81,19 @@ export const LinkBtn = styled.a<ButtonProps>`
 
       &:hover {
         background-color: ${accent};
+        color: ${secondary};
+      }
+    `}
+
+    ${props =>
+    props.kind === 'outline' &&
+    props.category === 'tertiary' &&
+    css`
+      border-color: ${secondary};
+      color: ${secondary};
+      background-color: transparent;
+
+      &:hover {
         color: ${secondary};
       }
     `}
