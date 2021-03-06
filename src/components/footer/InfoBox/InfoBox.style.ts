@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Colors } from '../../shared/Colors'
+import { Colors } from '../../../shared/Colors'
 const { black300: fontColor } = Colors
 
 export const Wrapper = styled.div`

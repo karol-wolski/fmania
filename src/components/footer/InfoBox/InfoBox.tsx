@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrapper, Desc } from './InfoBox.style'
 
-interface InfoBoxProps {
+export interface InfoBoxProps {
   icon: any
   desc: string
 }
