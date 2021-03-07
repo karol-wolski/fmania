@@ -21,7 +21,7 @@ export interface ProductsSliderProps {
 
 const ProductsSlider: React.FC<ProductsSliderProps> = ({ name, border = false, items }) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
