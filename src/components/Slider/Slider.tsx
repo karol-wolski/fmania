@@ -44,7 +44,7 @@ const Slider: React.FC = () => {
   return (
     <SlickSlider {...settings}>
       {items.map(item => (
-        <Slide {...item} />
+        <Slide key={item.title} {...item} />
       ))}
     </SlickSlider>
   )
