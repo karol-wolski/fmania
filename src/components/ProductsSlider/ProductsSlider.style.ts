@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   padding: 2rem 0;
+  margin: 2rem 0;
 `
 
 export const SectionName = styled.h2`
