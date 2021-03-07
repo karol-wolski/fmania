@@ -7,8 +7,10 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  max-width: 100%;
+  width: 100%;
+  height: 21.3rem;
   position: relative;
+  overflow: hidden;
 `
 
 export const Desc = styled.div`
