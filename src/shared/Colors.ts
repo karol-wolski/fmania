@@ -3,6 +3,7 @@ export const Colors = {
   black100: '#211f1f',
   black200: '#222220',
   black300: '#353333',
+  black400: '#343232',
   blue100: '#889bff',
   blue200: '#506BFA',
   blue300: '#5558DD',
@@ -15,4 +16,10 @@ export const Colors = {
   grey700: '#D4D4D4',
   grey800: '#9F9F9F',
   grey900: '#BABABA',
+  red100: '#ff3833',
+  red200: '#dd0500',
+  green100: '#4caf50',
+  green200: '#00c800',
+  orange100: '#ff9800',
+  orange200: '#fa8f01',
 }

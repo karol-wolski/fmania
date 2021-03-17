@@ -69,3 +69,19 @@ OutlineThird.args = {
   category: 'tertiary',
   link: '/',
 }
+
+export const ContainPrimaryCornerRound = Template.bind({})
+ContainPrimaryCornerRound.args = {
+  kind: 'contain',
+  category: 'primary',
+  link: '/',
+  corner: 'true',
+}
+
+export const ContainPrimaryUppercase = Template.bind({})
+ContainPrimaryUppercase.args = {
+  kind: 'contain',
+  category: 'primary',
+  link: '/',
+  uppercase: 'true',
+}

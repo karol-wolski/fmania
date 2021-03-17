@@ -6,6 +6,8 @@ const { white100: secondary, black100: primary, blue200: accent, grey300: border
 type ButtonProps = {
   kind: 'outline' | 'contain'
   category: 'primary' | 'secondary' | 'tertiary'
+  corner?: 'true' | 'false'
+  uppercase?: 'true' | 'false'
 }
 
 export const LinkBtn = styled(Link)<ButtonProps>`
@@ -14,7 +16,18 @@ export const LinkBtn = styled(Link)<ButtonProps>`
   font-weight: 500;
   cursor: pointer;
   border: none;
-  text-transform: uppercase;
+
+  ${props =>
+    props.uppercase &&
+    css`
+      text-transform: uppercase;
+    `}
+
+  ${props =>
+    props.corner &&
+    css`
+      border-radius: 0.5rem;
+    `}
 
   @media (min-width: 568px) {
     padding: 1.15rem 3rem;
