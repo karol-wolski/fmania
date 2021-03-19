@@ -3,7 +3,7 @@ import { Colors } from '../Colors'
 const { grey400: Text } = Colors
 type LabelProps = {
   kind: 'xSmall' | 'small' | 'medium' | 'big'
-  isActive: boolean
+  isActive?: boolean
 }
 
 export const LabelField = styled.label<LabelProps>`
@@ -13,7 +13,6 @@ export const LabelField = styled.label<LabelProps>`
   top: 0.3rem;
   left: 1rem;
   color: ${Text};
-  pointer-events: none;
   transition: all 0.15s ease-out;
   ${props =>
     props.kind === 'big' &&

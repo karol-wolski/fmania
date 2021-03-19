@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation'
 import Home from './views/Home/Home'
 import Login from './views/Login/Login'
 import ResetPassword from './views/ResetPassword/ResetPassword'
+import Register from './views/Register/Register'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/reset" component={ResetPassword} />
+          <Route exact path="/register" component={Register} />
         </Switch>
         <Footer />
       </Router>

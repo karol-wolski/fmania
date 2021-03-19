@@ -37,4 +37,12 @@ export const InputField = styled.input<InputProps>`
       height: 5rem;
       font-size: 1.6rem;
     `};
+
+  ${props =>
+    props.type === 'checkbox' &&
+    css`
+      height: 2rem;
+      width: unset;
+      margin: 0 0.5rem 0;
+    `}
 `

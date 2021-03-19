@@ -4,7 +4,7 @@ import { LabelField } from './Label.style'
 export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   kind: 'xSmall' | 'small' | 'medium' | 'big'
   children: string | object
-  isActive: boolean
+  isActive?: boolean
 }
 
 export const Label: React.FC<LabelProps> = ({ kind, children, isActive, ...props }) => {
