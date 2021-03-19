@@ -26,6 +26,7 @@ export const Title = styled.h2`
   font-family: 'Roboto', sans-serif;
   font-size: 2.2rem;
   font-weight: 500;
+  text-align: center;
   color: ${TitleColor};
 `
 
@@ -76,6 +77,20 @@ export const FormWrapper = styled.div`
   position: relative;
   margin-bottom: 1rem;
   width: 100%;
+`
+
+export const FormWrapperCheckbox = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+
+  label {
+    position: static;
+    display: flex;
+    align-items: center;
+  }
 `
 
 export const HorizontalLine = styled.span`
