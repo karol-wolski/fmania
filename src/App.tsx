@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Navigation from './components/Navigation/Navigation'
 import Home from './views/Home/Home'
 import Login from './views/Login/Login'
+import ResetPassword from './views/ResetPassword/ResetPassword'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/reset" component={ResetPassword} />
         </Switch>
         <Footer />
       </Router>
