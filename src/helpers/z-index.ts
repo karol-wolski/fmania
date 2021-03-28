@@ -1,4 +1,4 @@
-const elements = ['Nav']
+const elements = ['InputPointer', 'Nav']
 
 const getZindex = (el: string) => {
   const index = elements.indexOf(el)
