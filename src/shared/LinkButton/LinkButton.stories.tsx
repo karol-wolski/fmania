@@ -75,7 +75,7 @@ ContainPrimaryCornerRound.args = {
   kind: 'contain',
   category: 'primary',
   link: '/',
-  corner: 'true',
+  corner: true,
 }
 
 export const ContainPrimaryUppercase = Template.bind({})
@@ -83,5 +83,5 @@ ContainPrimaryUppercase.args = {
   kind: 'contain',
   category: 'primary',
   link: '/',
-  uppercase: 'true',
+  uppercase: true,
 }

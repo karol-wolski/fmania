@@ -77,7 +77,7 @@ const LoginForm: React.FC = () => {
       <Span>
         Creating an account has many benefits: check out faster, keep more than one address, track orders and more.
       </Span>
-      <LinkButton kind="contain" category="primary" link="/register" corner="true">
+      <LinkButton kind="contain" category="primary" link="/register" corner>
         Create an Account
       </LinkButton>
     </Container>

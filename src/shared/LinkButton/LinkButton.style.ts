@@ -6,8 +6,8 @@ const { white100: secondary, black100: primary, blue200: accent, grey300: border
 type ButtonProps = {
   kind: 'outline' | 'contain'
   category: 'primary' | 'secondary' | 'tertiary'
-  corner?: 'true' | 'false'
-  uppercase?: 'true' | 'false'
+  corner?: boolean
+  uppercase?: boolean
 }
 
 export const LinkBtn = styled(Link)<ButtonProps>`

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { HeaderWrapper, Image, ButtonsWrapper, Input, Form, FormBtn } from './Header.styles'
 import Logo from '../../images/logo.svg'
-import { Button } from '../../shared/Button/Button'
+import { Button } from '../../shared/LinkButton/LinkButton'
 import { IoMdSearch, IoMdLogIn, IoMdPersonAdd } from 'react-icons/io'
 
 const Header: React.FC = () => {
@@ -29,10 +29,10 @@ const Header: React.FC = () => {
       </Form>
 
       <ButtonsWrapper>
-        <Button kind="contain" category="secondary">
+        <Button kind="contain" category="secondary" link="/login" corner>
           {displayText ? 'Login' : <IoMdLogIn />}
         </Button>
-        <Button kind="contain" category="primary">
+        <Button kind="contain" category="primary" link="/register" corner>
           {displayText ? 'Register' : <IoMdPersonAdd />}
         </Button>
       </ButtonsWrapper>

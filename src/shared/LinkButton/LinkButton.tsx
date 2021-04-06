@@ -6,8 +6,8 @@ export interface ButtonProps {
   kind: 'outline' | 'contain'
   category: 'primary' | 'secondary' | 'tertiary'
   link: string
-  corner?: 'true' | 'false'
-  uppercase?: 'true' | 'false'
+  corner?: boolean
+  uppercase?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -15,8 +15,8 @@ export const Button: React.FC<ButtonProps> = ({
   kind,
   category,
   link,
-  corner = 'false',
-  uppercase = 'false',
+  corner = false,
+  uppercase = false,
 }) => {
   return (
     <LinkBtn kind={kind} category={category} corner={corner} uppercase={uppercase} to={link}>
