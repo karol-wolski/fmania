@@ -1,4 +1,5 @@
 import React from 'react'
+import { GetProductPath } from '../../../../helpers/getProductPath'
 import { ProductType } from '../../../../types/types'
 import { Wrapper, Image, Name, Price, ImageWrapper } from './ProductGridItem.style'
 
@@ -14,7 +15,7 @@ export const SingleProduct: React.FC<ProductProps> = ({ product }) => {
       <ImageWrapper>
         <Image src={image} alt={name} />
       </ImageWrapper>
-      <Name to={id.toString()}>{name}</Name>
+      <Name to={GetProductPath(id)}>{name}</Name>
       <Price>
         ${price} {priceOld && <Price old>${priceOld}</Price>}
       </Price>
