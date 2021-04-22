@@ -5,11 +5,12 @@ export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   kind: 'xSmall' | 'small' | 'medium' | 'big'
   children: string | object
   isActive?: boolean
+  isEffect?: boolean
 }
 
-export const Label: React.FC<LabelProps> = ({ kind, children, isActive, ...props }) => {
+export const Label: React.FC<LabelProps> = ({ kind, children, isActive, isEffect = true, ...props }) => {
   return (
-    <LabelField kind={kind} isActive={isActive} {...props}>
+    <LabelField kind={kind} isActive={isActive} isEffect={isEffect} {...props}>
       {children}
     </LabelField>
   )
