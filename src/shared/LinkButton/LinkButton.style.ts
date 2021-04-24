@@ -6,8 +6,8 @@ const { white100: secondary, black100: primary, blue200: accent, grey300: border
 type ButtonProps = {
   kind: 'outline' | 'contain'
   category: 'primary' | 'secondary' | 'tertiary'
-  corner?: 'true' | 'false'
-  uppercase?: 'true' | 'false'
+  corner?: 1 | 0
+  uppercase?: 1 | 0
 }
 
 export const LinkBtn = styled(Link)<ButtonProps>`
@@ -15,19 +15,8 @@ export const LinkBtn = styled(Link)<ButtonProps>`
   font-size: 1.2rem;
   font-weight: 500;
   cursor: pointer;
-  border: none;
-
-  ${props =>
-    props.uppercase &&
-    css`
-      text-transform: uppercase;
-    `}
-
-  ${props =>
-    props.corner &&
-    css`
-      border-radius: 0.5rem;
-    `}
+  border-radius: ${props => (props.corner ? '0.5rem' : 'unset')};
+  text-transform: ${props => (props.uppercase ? 'uppercase' : 'unset')};
 
   @media (min-width: 568px) {
     padding: 1.15rem 3rem;
@@ -42,9 +31,9 @@ export const LinkBtn = styled(Link)<ButtonProps>`
       background-color: ${primary};
       color: ${secondary};
 
-      &:hover {
-        border: 2px solid ${primary};
-        background-color: transparent;
+      &:hover,
+      &:focus {
+        background-color: ${secondary};
         color: ${primary};
       }
     `}
@@ -57,9 +46,9 @@ export const LinkBtn = styled(Link)<ButtonProps>`
       background-color: ${accent};
       color: ${secondary};
 
-      &:hover {
-        border: 2px solid ${accent};
-        background-color: transparent;
+      &:hover,
+      &:focus {
+        background-color: ${secondary};
         color: ${accent};
       }
     `}
@@ -79,7 +68,8 @@ export const LinkBtn = styled(Link)<ButtonProps>`
       border-color: ${border};
       color: ${primary};
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: ${primary};
         color: ${secondary};
       }
@@ -92,7 +82,8 @@ export const LinkBtn = styled(Link)<ButtonProps>`
       border-color: ${accent};
       color: ${accent};
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: ${accent};
         color: ${secondary};
       }
@@ -106,7 +97,8 @@ export const LinkBtn = styled(Link)<ButtonProps>`
       color: ${secondary};
       background-color: transparent;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: ${secondary};
       }
     `}

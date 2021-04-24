@@ -67,7 +67,7 @@ const LoginForm: React.FC = () => {
           {errors.password && <ErrorMessage type="Error" message="Password field is required" />}
         </FormWrapper>
         <LinkBtn to="/reset">Forgot Password</LinkBtn>
-        <Button kind="contain" category="secondary">
+        <Button kind="contain" category="secondary" corner>
           Login
         </Button>
       </Form>
@@ -77,7 +77,7 @@ const LoginForm: React.FC = () => {
       <Span>
         Creating an account has many benefits: check out faster, keep more than one address, track orders and more.
       </Span>
-      <LinkButton kind="contain" category="primary" link="/register" corner="true">
+      <LinkButton kind="contain" category="primary" link="/register" corner>
         Create an Account
       </LinkButton>
     </Container>

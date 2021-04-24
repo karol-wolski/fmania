@@ -47,7 +47,7 @@ const ResetPasswordForm: React.FC = () => {
           )}
         </FormWrapper>
 
-        <Button kind="contain" category="secondary">
+        <Button kind="contain" category="secondary" corner>
           Reset
         </Button>
       </Form>

@@ -48,6 +48,22 @@ OutlineSecondary.args = {
   link: '/',
 }
 
+export const ContainPrimaryCornerRound = Template.bind({})
+ContainPrimaryCornerRound.args = {
+  kind: 'contain',
+  category: 'primary',
+  link: '/',
+  corner: true,
+}
+
+export const ContainPrimaryUppercase = Template.bind({})
+ContainPrimaryUppercase.args = {
+  kind: 'contain',
+  category: 'primary',
+  link: '/',
+  uppercase: true,
+}
+
 const Template1: Story<ButtonProps> = args => (
   <div
     style={{
@@ -68,20 +84,4 @@ OutlineThird.args = {
   kind: 'outline',
   category: 'tertiary',
   link: '/',
-}
-
-export const ContainPrimaryCornerRound = Template.bind({})
-ContainPrimaryCornerRound.args = {
-  kind: 'contain',
-  category: 'primary',
-  link: '/',
-  corner: 'true',
-}
-
-export const ContainPrimaryUppercase = Template.bind({})
-ContainPrimaryUppercase.args = {
-  kind: 'contain',
-  category: 'primary',
-  link: '/',
-  uppercase: 'true',
 }

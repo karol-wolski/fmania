@@ -5,6 +5,8 @@ const { white100: secondary, black100: primary, blue200: accent, grey300: border
 type ButtonProps = {
   kind: 'outline' | 'contain'
   category: 'primary' | 'secondary'
+  corner?: 1 | 0
+  uppercase?: 1 | 0
 }
 
 export const Btn = styled.button<ButtonProps>`
@@ -12,8 +14,8 @@ export const Btn = styled.button<ButtonProps>`
   font-size: 1.4rem;
   font-weight: 700;
   cursor: pointer;
-  border: none;
-  border-radius: 0.5rem;
+  border-radius: ${props => (props.corner ? '0.5rem' : 'unset')};
+  text-transform: ${props => (props.uppercase ? 'uppercase' : 'unset')};
 
   @media (min-width: 360px) {
     padding: 1.15rem 3rem;
@@ -27,9 +29,9 @@ export const Btn = styled.button<ButtonProps>`
       background-color: ${primary};
       color: ${secondary};
 
-      &:hover {
-        border: 2px solid ${primary};
-        background-color: transparent;
+      &:hover,
+      &:focus {
+        background-color: ${secondary};
         color: ${primary};
       }
     `}
@@ -42,20 +44,19 @@ export const Btn = styled.button<ButtonProps>`
       background-color: ${accent};
       color: ${secondary};
 
-      &:hover {
-        border: 2px solid ${accent};
-        background-color: transparent;
+      &:hover,
+      &:focus {
+        background-color: ${secondary};
         color: ${accent};
       }
     `}
 
-  ${props =>
+    ${props =>
     props.kind === 'outline' &&
     css`
       border: 2px solid;
       background-color: ${secondary};
     `}
-
 
   ${props =>
     props.kind === 'outline' &&
@@ -64,7 +65,8 @@ export const Btn = styled.button<ButtonProps>`
       border-color: ${border};
       color: ${primary};
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: ${primary};
         color: ${secondary};
       }
@@ -77,7 +79,8 @@ export const Btn = styled.button<ButtonProps>`
       border-color: ${accent};
       color: ${accent};
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: ${accent};
         color: ${secondary};
       }
