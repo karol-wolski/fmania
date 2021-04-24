@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 import Footer from './components/footer/Footer'
 import Header from './components/Header/Header'
 import Navigation from './components/Navigation/Navigation'
@@ -21,6 +22,15 @@ const App = () => {
   return (
     <>
       <Router>
+        <Helmet>
+          <title>Fmania</title>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet"
+          />
+          <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
+        </Helmet>
         <Navigation />
         <Header />
         {isBreadcrumbsShow && <Breadcrumbs />}
