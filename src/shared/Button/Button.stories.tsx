@@ -8,7 +8,7 @@ export default {
 } as Meta
 
 const Template: Story<ButtonProps> = args => (
-  <div style={{ margin: '1.5rem' }}>
+  <div style={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
     <Button {...args}>Click me</Button>
   </div>
 )
@@ -34,4 +34,18 @@ export const OutlineSecondary = Template.bind({})
 OutlineSecondary.args = {
   kind: 'outline',
   category: 'secondary',
+}
+
+export const ContainPrimaryCornerRound = Template.bind({})
+ContainPrimaryCornerRound.args = {
+  kind: 'contain',
+  category: 'primary',
+  corner: true,
+}
+
+export const ContainPrimaryUppercase = Template.bind({})
+ContainPrimaryUppercase.args = {
+  kind: 'contain',
+  category: 'primary',
+  uppercase: true,
 }

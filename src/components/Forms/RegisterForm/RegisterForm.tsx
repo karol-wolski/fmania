@@ -136,7 +136,7 @@ const LoginForm: React.FC = () => {
           <Alert type="Error" message="Confirm Password should hae at least 8 characters" />
         )}
         {errors.passwordConfirm?.type === 'validate' && <Alert type="Error" message="Password do not match" />}
-        <Button kind="contain" category="secondary">
+        <Button kind="contain" category="secondary" corner>
           Create an Account
         </Button>
       </Form>
