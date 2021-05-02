@@ -10,6 +10,7 @@ import ResetPassword from './views/ResetPassword/ResetPassword'
 import Register from './views/Register/Register'
 import Breadcrumbs from './shared/Breadcrumbs/Breadcrumbs'
 import { SITE_WITHOUT_BREADCRUMBS } from '../src/constants/constants'
+import Product from './views/Product/Product'
 
 const displayBreadcrumbs = () => {
   const windowLocationPathname = window.location.pathname
@@ -39,6 +40,9 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/reset" component={ResetPassword} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/products" component={Product} />
+          <Route exact path="/:gender" component={Product} />
+          <Route exact path="/:gender/:category" component={Product} />
         </Switch>
         <Footer />
       </Router>
