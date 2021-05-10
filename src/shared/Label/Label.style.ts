@@ -4,12 +4,13 @@ const { grey400: Text } = Colors
 type LabelProps = {
   kind: 'xSmall' | 'small' | 'medium' | 'big'
   isActive?: boolean
+  isEffect?: boolean
 }
 
 export const LabelField = styled.label<LabelProps>`
   font-size: 1.4rem;
   font-weight: 300;
-  position: absolute;
+  position: ${props => (props.isEffect ? 'absolute' : 'unset')};
   top: 0.3rem;
   left: 1rem;
   color: ${Text};

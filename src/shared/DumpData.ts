@@ -300,3 +300,84 @@ export const Products = [
       'Aenean in turpis eu tortor lobortis sagittis vitae sed augue. Fusce ullamcorper porta mauris, vitae luctus odio dictum at. Proin augue ex, egestas at leo nec, cursus euismod nulla. Pellentesque vel erat nec elit pretium lobortis in et orci. Maecenas euismod lorem dui, et varius nulla pulvinar ut.',
   },
 ]
+
+export const Comments = [
+  {
+    id: 1,
+    title: 'Amazing Products!',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque feugiat metus lorem, quis aliquam quam lacinia id. Aenean arcu leo, viverra sit amet justo id, porttitor vulputate justo. Sed ultricies facilisis consequat.',
+    date: '11 May 2021',
+    author: 'John Doe',
+    mark: 5,
+  },
+  {
+    id: 2,
+    title: 'Nice One',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque feugiat metus lorem, quis aliquam quam lacinia id. Aenean arcu leo, viverra sit amet justo id, porttitor vulputate justo. Sed ultricies facilisis consequat.',
+    date: '11 May 2021',
+    author: 'John Doe',
+    mark: 3,
+  },
+  {
+    id: 3,
+    title: 'Good!',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque feugiat metus lorem, quis aliquam quam lacinia id. Aenean arcu leo, viverra sit amet justo id, porttitor vulputate justo. Sed ultricies facilisis consequat.',
+    date: '11 May 2021',
+    author: 'John Doe',
+    mark: 4,
+  },
+]
+
+export const SingleProduct = {
+  id: 1,
+  name: 'Net Semi-stitched Dress',
+  price: 145,
+  priceOld: 10,
+  color: [
+    {
+      name: 'Red',
+      value: 'col-red',
+    },
+    {
+      name: 'Blue',
+      value: 'col-blue',
+    },
+  ],
+  size: [
+    {
+      name: 'S',
+      value: 'size-s',
+    },
+    {
+      name: 'M',
+      value: 'size-M',
+    },
+  ],
+  popularity: [3.8, 1230],
+  status: 'available',
+  image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
+  shortDesc:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus mattis nisi, ut vehicula leo volutpat efficitur.',
+  desc:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus mattis nisi, ut vehicula leo volutpat efficitur. Aliquam semper diam ac risus aliquam, ut finibus erat lacinia. Proin id ultricies lorem, a molestie nibh. Integer facilisis, elit sit amet sagittis ullamcorper, justo mauris auctor est, et suscipit turpis orci sed urna.',
+  images: [
+    {
+      id: 1,
+      name: 'Net Semi-stitched Dress',
+      imgLink: 'https://i.pinimg.com/474x/04/7d/c0/047dc058297befc9250755924cad3529.jpg',
+    },
+    {
+      id: 2,
+      name: 'Net Semi-stitched Dress',
+      imgLink: 'https://i.pinimg.com/736x/56/d5/5a/56d55aa16f9f1df0ec9dc8ae9413baca.jpg',
+    },
+    {
+      id: 3,
+      name: 'Fair N Flair Garments',
+      imgLink: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
+    },
+  ],
+}
