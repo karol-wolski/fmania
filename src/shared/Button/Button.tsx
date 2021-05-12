@@ -3,8 +3,8 @@ import { Btn } from './Button.style'
 
 export interface ButtonProps {
   children: string | object
-  kind: 'outline' | 'contain'
-  category: 'primary' | 'secondary'
+  kind?: 'outline' | 'contain'
+  category?: 'primary' | 'secondary'
   onClick?: () => void
   corner?: boolean
   uppercase?: boolean
