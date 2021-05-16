@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   padding: 1.5rem;
 `
 
-export const Product = styled.div`
+export const Product = styled.form`
   display: grid;
 
   @media (min-width: 768px) {

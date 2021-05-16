@@ -12,6 +12,7 @@ import Breadcrumbs from './shared/Breadcrumbs/Breadcrumbs'
 import { SITE_WITHOUT_BREADCRUMBS } from '../src/constants/constants'
 import Product from './views/Product/Product'
 import ProductDetail from './views/ProductDetail/ProductDetail'
+import Cart from './views/Cart/Cart'
 
 const displayBreadcrumbs = () => {
   const windowLocationPathname = window.location.pathname
@@ -41,6 +42,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/reset" component={ResetPassword} />
           <Route exact path="/register" component={Register} />
+          <Route exact path="/cart" component={Cart} />
           <Route exact path="/:gender" component={Product} />
           <Route exact path="/:gender/:category" component={Product} />
           <Route exact path="/:gender/:category/:product" component={ProductDetail} />

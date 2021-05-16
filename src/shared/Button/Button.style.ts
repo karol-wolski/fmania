@@ -3,19 +3,27 @@ import { Colors } from '../../shared/Colors'
 const { white100: secondary, black100: primary, blue200: accent, grey300: border } = Colors
 
 type ButtonProps = {
-  kind: 'outline' | 'contain'
-  category: 'primary' | 'secondary'
+  kind?: 'outline' | 'contain'
+  category?: 'primary' | 'secondary'
   corner?: 1 | 0
   uppercase?: 1 | 0
 }
 
 export const Btn = styled.button<ButtonProps>`
+  display: flex;
+  justify-content: center;
   padding: 1rem 1.5rem;
   font-size: 1.4rem;
   font-weight: 700;
   cursor: pointer;
   border-radius: ${props => (props.corner ? '0.5rem' : 'unset')};
   text-transform: ${props => (props.uppercase ? 'uppercase' : 'unset')};
+  border: none;
+  background-color: unset;
+
+  &:hover {
+    border: 1px solid ${primary};
+  }
 
   @media (min-width: 360px) {
     padding: 1.15rem 3rem;

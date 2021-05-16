@@ -339,21 +339,21 @@ export const SingleProduct = {
   color: [
     {
       name: 'Red',
-      value: 'col-red',
+      value: 'red',
     },
     {
       name: 'Blue',
-      value: 'col-blue',
+      value: 'blue',
     },
   ],
   size: [
     {
       name: 'S',
-      value: 'size-s',
+      value: 'S',
     },
     {
       name: 'M',
-      value: 'size-M',
+      value: 'M',
     },
   ],
   popularity: [3.8, 1230],
