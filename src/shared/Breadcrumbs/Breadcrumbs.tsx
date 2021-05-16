@@ -4,7 +4,12 @@ import { Breadcrumb, BreadcrumbLink, BreadcrumbLinkBold, BreadcrumbsWrapper, Wra
 import { MdChevronRight } from 'react-icons/md'
 
 const Breadcrumbs: React.FC = () => {
-  const breadcrumbs = useBreadcrumbs()
+  const breadcrumbs = useBreadcrumbs([
+    {
+      path: '/orderplaced',
+      breadcrumb: 'Order Placed',
+    },
+  ])
   const breadcrumbLength = breadcrumbs.length
   return (
     <Wrapper>
