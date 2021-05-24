@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.js": "/static/js/main.dd0cdd54.chunk.js",
+    "main.js.map": "/static/js/main.dd0cdd54.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.612a1095.js",
+    "runtime-main.js.map": "/static/js/runtime-main.612a1095.js.map",
+    "static/css/2.165ff965.chunk.css": "/static/css/2.165ff965.chunk.css",
+    "static/js/2.ec572048.chunk.js": "/static/js/2.ec572048.chunk.js",
+    "static/js/2.ec572048.chunk.js.map": "/static/js/2.ec572048.chunk.js.map",
+    "static/js/3.de22ebde.chunk.js": "/static/js/3.de22ebde.chunk.js",
+    "static/js/3.de22ebde.chunk.js.map": "/static/js/3.de22ebde.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.165ff965.chunk.css.map": "/static/css/2.165ff965.chunk.css.map",
+    "static/js/2.ec572048.chunk.js.LICENSE.txt": "/static/js/2.ec572048.chunk.js.LICENSE.txt",
+    "static/media/logo.c2627693.svg": "/static/media/logo.c2627693.svg",
+    "static/media/mastercard.8f50a3e4.png": "/static/media/mastercard.8f50a3e4.png",
+    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf",
+    "static/media/visa.d72c49e3.png": "/static/media/visa.d72c49e3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.612a1095.js",
+    "static/css/2.165ff965.chunk.css",
+    "static/js/2.ec572048.chunk.js",
+    "static/js/main.dd0cdd54.chunk.js"
+  ]
+}
