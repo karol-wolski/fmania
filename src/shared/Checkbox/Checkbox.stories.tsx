@@ -7,10 +7,10 @@ export default {
   component: Checkbox,
 } as Meta
 
-const Template: Story = ({ inputName, inputId, labelText, color, callback }) => {
+const Template: Story = ({ inputName, labelText, color, callback }) => {
   return (
     <div style={{ margin: '3rem', position: 'relative' }}>
-      <Checkbox inputName={inputName} inputId={inputId} labelText={labelText} color={color} callback={callback} />
+      <Checkbox inputName={inputName} labelText={labelText} color={color} callback={callback} />
     </div>
   )
 }

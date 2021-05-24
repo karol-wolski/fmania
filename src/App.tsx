@@ -25,7 +25,7 @@ const App = () => {
   const isBreadcrumbsShow = displayBreadcrumbs()
   return (
     <>
-      <Router>
+      <Router basename={process.env.REACT_APP_BASENAME}>
         <Helmet>
           <title>Fmania</title>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -45,9 +45,12 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/cart" component={Cart} />
           <Route exact path="/orderplaced" component={OrderPlaced} />
+          <Route exact path="/:gender/product-:product" component={ProductDetail} />
           <Route exact path="/:gender" component={Product} />
           <Route exact path="/:gender/:category" component={Product} />
-          <Route exact path="/:gender/:category/:product" component={ProductDetail} />
+          <Route exact path="/:gender/:category/product-:product" component={ProductDetail} />
+          <Route exact path="/:gender/:category/:subcategory" component={Product} />
+          <Route exact path="/:gender/:category/:subcategory/product-:product" component={ProductDetail} />
         </Switch>
         <Footer />
       </Router>
