@@ -2,6 +2,16 @@
   "name": "fmania",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karol-wolski/fmania"
+  },
+  "bugs": {
+    "url": "https://github.com/karol-wolski/fmania/issues"
+  },
+  "homepage": "https://karol-wolski.github.io/fmania",
+  "author": "Karol Wolski",
+  "license": "ISC",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
