@@ -17,6 +17,9 @@ jobs:
         run: |
           npm install
           npm run-script build
+        env:
+          REACT_APP_API: ${{secrets.REACT_APP_API}}
+          REACT_APP_BASENAME: ${{secrets.REACT_APP_BASENAME}}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
