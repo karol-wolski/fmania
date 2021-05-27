@@ -219,7 +219,7 @@ export const FilterColor = [
   },
   {
     id: 5,
-    inputName: 'color-green',
+    inputName: 'green',
     inputId: 'color-green',
     labelText: 'Green',
     color: '#478C52',
@@ -230,9 +230,10 @@ export const Products = [
   {
     id: 1,
     name: 'Net Semi-stitched Dress',
+    slug: 'Net-Semi-stitched-Dress',
     price: 145,
     color: 'yellow',
-    size: ['m', 'l'],
+    sizes: ['m', 'l'],
     popularity: [3.8, 1230],
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
@@ -241,10 +242,11 @@ export const Products = [
   {
     id: 2,
     name: 'Fair N Flair Garments',
+    slug: 'Fair-N-Flair-Garments',
     price: 169,
     priceOld: 199,
     color: 'blue',
-    size: ['s', 'l'],
+    sizes: ['s', 'l'],
     type: 'abc',
     popularity: [3.7, 346],
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
@@ -254,9 +256,10 @@ export const Products = [
   {
     id: 3,
     name: 'Fair N Flair Garments',
+    slug: 'Fair-N-Flair-Garments',
     price: 245,
     color: 'red',
-    size: ['m', 'xl'],
+    sizes: ['m', 'xl'],
     popularity: [4, 1],
     type: 'abc',
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
@@ -266,9 +269,10 @@ export const Products = [
   {
     id: 4,
     name: 'Net Semi-stitched Dress',
+    slug: 'Net-Semi-stitched-Dress',
     price: 145,
     color: 'yellow',
-    size: ['m', 'l'],
+    sizes: ['m', 'l'],
     popularity: [3.8, 1230],
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
@@ -277,10 +281,11 @@ export const Products = [
   {
     id: 5,
     name: 'Fair N Flair Garments',
+    slug: 'Fair-N-Flair-Garments',
     price: 169,
     priceOld: 199,
     color: 'blue',
-    size: ['s', 'l'],
+    sizes: ['s', 'l'],
     type: 'abc',
     popularity: [3.7, 346],
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
@@ -290,9 +295,10 @@ export const Products = [
   {
     id: 6,
     name: 'Fair N Flair Garments',
+    slug: 'Fair-N-Flair-Garments',
     price: 245,
     color: 'red',
-    size: ['m', 'xl'],
+    sizes: ['m', 'xl'],
     popularity: [4, 1],
     type: 'abc',
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',

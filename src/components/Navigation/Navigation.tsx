@@ -5,23 +5,16 @@ import {
   NavList,
   NavItem,
   NavLink,
-  SubNav,
-  SubNavList,
-  SubNavItem,
-  SubNavLink,
   MenuButton,
   SelectGroup,
   Select,
   Basket,
 } from './Navigation.styles'
-import { IoMdArrowDropdown, IoMdClose, IoMdBasket } from 'react-icons/io'
+import { IoMdClose, IoMdBasket } from 'react-icons/io'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isSubmenuActive, setIsSubmenuActive] = useState(false)
-
-  const activeSubmenu = () => setIsSubmenuActive(!isSubmenuActive)
   const openMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
 
   return (
@@ -33,46 +26,13 @@ const Navigation: React.FC = () => {
         </MenuButton>
         <NavList isOpen={isMobileMenuOpen}>
           <NavItem>
-            <NavLink to="/" onClick={activeSubmenu}>
-              Collactions <IoMdArrowDropdown />
-            </NavLink>
-            <SubNav isActive={isSubmenuActive}>
-              <SubNavList>
-                <SubNavItem>
-                  <SubNavLink to="/">Stainless Steel</SubNavLink>
-                </SubNavItem>
-                <SubNavItem>
-                  <SubNavLink to="/">Store</SubNavLink>
-                </SubNavItem>
-                <SubNavItem>
-                  <SubNavLink to="/">Home Style Store</SubNavLink>
-                </SubNavItem>
-                <SubNavItem>
-                  <SubNavLink to="/">Milton</SubNavLink>
-                </SubNavItem>
-                <SubNavItem>
-                  <SubNavLink to="/">Ajanta</SubNavLink>
-                </SubNavItem>
-                <SubNavItem>
-                  <SubNavLink to="/">Prestige</SubNavLink>
-                </SubNavItem>
-                <SubNavItem>
-                  <SubNavLink to="/">Home Town</SubNavLink>
-                </SubNavItem>
-              </SubNavList>
-            </SubNav>
-          </NavItem>
-          <NavItem>
             <NavLink to="/">Home</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/">Women</NavLink>
+            <NavLink to="/women">Women</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/">Home & Furniture</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/">Sports</NavLink>
+            <NavLink to="/men">Men</NavLink>
           </NavItem>
         </NavList>
         <SelectGroup isVisible={isMobileMenuOpen}>

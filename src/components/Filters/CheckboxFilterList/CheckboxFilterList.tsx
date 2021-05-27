@@ -17,16 +17,10 @@ const CheckboxFilterList: React.FC<CheckboxFilterListProps> = ({ title, data, ca
   return (
     <FilterBox boxName={title}>
       <List>
-        {data.map(({ inputName, inputId, labelText, color }) => {
+        {data.map(({ inputName, labelText, color }) => {
           return (
-            <ListItem key={inputId}>
-              <Checkbox
-                inputName={inputName}
-                inputId={inputId}
-                labelText={labelText}
-                color={color}
-                callback={handleOnChange}
-              />
+            <ListItem key={inputName}>
+              <Checkbox inputName={inputName} labelText={labelText} color={color} callback={handleOnChange} />
             </ListItem>
           )
         })}

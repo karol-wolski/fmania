@@ -8,14 +8,14 @@ interface ProductProps {
 }
 
 export const SingleProduct: React.FC<ProductProps> = ({ product }) => {
-  const { id, name, price, priceOld, image } = product
+  const { name, price, priceOld, image, slug } = product
 
   return (
     <Wrapper>
       <ImageWrapper>
         <Image src={image} alt={name} />
       </ImageWrapper>
-      <Name to={GetProductPath(id)}>{name}</Name>
+      <Name to={GetProductPath(`product-${slug}`)}>{name}</Name>
       <Price>
         ${price} {priceOld && <Price old>${priceOld}</Price>}
       </Price>
