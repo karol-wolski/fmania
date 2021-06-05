@@ -176,4 +176,10 @@ export default createGlobalStyle`
     height: 25px;
     color: ${arrow};
   }
+
+  .Toastify__toast--success {
+    background-color: #00CD00;
+    color: #fff;
+    font-size: 1.4rem;
+  }
 `

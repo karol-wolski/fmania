@@ -14,9 +14,9 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://127.0.0.1:3000/products/new'),
-      fetch('http://127.0.0.1:3000/products/discount'),
-      fetch('http://127.0.0.1:3000/sliders'),
+      fetch(`${process.env.REACT_APP_API}/products/new`),
+      fetch(`${process.env.REACT_APP_API}/products/discount`),
+      fetch(`${process.env.REACT_APP_API}/sliders`),
     ])
       .then(responses => Promise.all(responses.map(response => response.json())))
       .then(data => {
