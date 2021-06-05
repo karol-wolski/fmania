@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReviewForm from '../../components/Forms/ReviewForm/ReviewForm'
 import ProductGallery from '../../components/ProductGallery/ProductGallery'
 import Reviews from '../../components/Reviews/Reviews'
 import Tabs from '../../components/Tabs/Tabs'
 import { Button } from '../../shared/Button/Button'
-import { Comments, SingleProduct } from '../../shared/DumpData'
 import { Input } from '../../shared/Input/Input'
 import { Label } from '../../shared/Label/Label'
 import Select from '../../shared/Select/Select'
@@ -26,6 +25,9 @@ import {
   Description,
   Product,
 } from './ProductDetail.style'
+import { SingleProductType } from '../../types/types'
+import { fetchAsync } from '../../helpers/fetch'
+import { useParams } from 'react-router'
 
 type ProductItem = {
   id: number | string
@@ -37,20 +39,87 @@ type ProductItem = {
   quantity: any
   code: string
 }
+interface routerParam {
+  gender: string
+  product: string
+}
 
 const ProductDetail: React.FC = () => {
+  const { gender, product: productName } = useParams<routerParam>()
+  const path = `${gender}/product/${productName}`
   const { register, handleSubmit, errors } = useForm()
-  const { id, name, price, priceOld, size, color, popularity, images, status, desc, shortDesc } = SingleProduct
+  const isUserLogged = getFromLocalStorage('user')
+
+  const [data, setData] = useState<SingleProductType>({
+    id: '',
+    name: '',
+    price: 0,
+    priceOld: 0,
+    sizes: [
+      {
+        name: '',
+        value: '',
+      },
+    ],
+    popularity: [0, 0],
+    image: '',
+    desc: '',
+    shortDesc: '',
+    slug: '',
+    category: '',
+    subcategory: '',
+    color: [
+      {
+        name: '',
+        value: '',
+      },
+    ],
+    status: '',
+    images: [
+      {
+        id: 0,
+        name: '',
+        imgLink: '',
+      },
+    ],
+  })
+  const [comments, setComments] = useState([])
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    fetchAsync(`products/${path}`).then(data => {
+      setData(data[0])
+      setLoaded(true)
+    })
+  }, [path])
+
   const [product, setProduct] = useState<ProductItem>({
-    id: id,
-    name: name,
-    price: price,
+    id: 1,
+    name: '',
+    price: 0,
     color: '',
     size: '',
-    image: images[0].imgLink,
+    image: '',
     quantity: 1,
     code: '',
   })
+
+  useEffect(() => {
+    setProduct({
+      id: data.id,
+      name: data.name,
+      price: data.price,
+      color: '',
+      size: '',
+      image: data.image,
+      quantity: 1,
+      code: '',
+    })
+  }, [data])
+
+  useEffect(() => {
+    fetchAsync(`comments/${data.id}`).then(comment => setComments(comment))
+  }, [data, setComments])
 
   const setProductInfo = (e: any) => {
     setProduct({
@@ -79,7 +148,7 @@ const ProductDetail: React.FC = () => {
   }
 
   const addToCart = () => {
-    product.code = `${id}-${product.size}-${product.color}`
+    product.code = `${data.id}-${product.size}-${product.color}`
     const products = getFromLocalStorage('cart')
     const isProduct = products && findProductInLocalStorage(product.code, products)
     const quantityLS = isProduct && getQuantiTyFromLocalStorage(isProduct)
@@ -91,68 +160,78 @@ const ProductDetail: React.FC = () => {
 
   return (
     <Wrapper>
-      <Product onSubmit={handleSubmit(onSubmit)}>
-        <ProductGallery images={images} />
-        <Detail>
-          <ProductName>{name}</ProductName>
-          <Container border>
-            <Ratings>
-              <Marks>{popularity[0]}</Marks>
-              Ratings: {popularity[1]}
-            </Ratings>
-            <Status status={status === 'available' ? 'available' : 'unavailable'}>{status}</Status>
-            <p>Add your review</p>
-          </Container>
-          <Container>
-            <Price>${price}</Price> {priceOld && <Price old>${priceOld}</Price>}
-          </Container>
-          <SelectContainer>
-            <Select
-              labelName="Size"
-              options={size}
-              onChange={setProductInfo}
-              refForward={register({ required: true })}
-            />
-            <Select
-              labelName="Color"
-              options={color}
-              onChange={setProductInfo}
-              refForward={register({ required: true })}
-            />
-          </SelectContainer>
-          <PriceContainer>
-            <Label kind="small" isEffect={false}>
-              Qty
-            </Label>
-            <Input
-              name="quantity"
-              kind="small"
-              type="number"
-              defaultValue={1}
-              onChange={setProductInfo}
-              refForward={register({ required: true })}
-            />
-          </PriceContainer>
-          <ButtonContainer>
-            <Button kind="contain" category="primary" uppercase>
-              Buy now
-            </Button>
-            <Button kind="outline" category="primary" uppercase>
-              Add to cart
-            </Button>
-          </ButtonContainer>
-          {errors.size && <Alert type="Error" message="Size field is required" />}
-          {errors.color && <Alert type="Error" message="Color field is required" />}
-          <Description>{shortDesc}</Description>
-        </Detail>
-      </Product>
-      <Tabs>
-        <div aria-label="Descriptions">{desc}</div>
-        <div aria-label="Ratings & Review">
-          <Reviews data={Comments} />
-          <ReviewForm />
-        </div>
-      </Tabs>
+      {loaded && (
+        <>
+          <Product onSubmit={handleSubmit(onSubmit)}>
+            <ProductGallery images={data.images} />
+            <Detail>
+              <ProductName>{data.name}</ProductName>
+              <Container border>
+                <Ratings>
+                  <Marks>{data.popularity[0]}</Marks>
+                  Ratings: {data.popularity[1]}
+                </Ratings>
+                <Status status={data.status === 'available' ? 'available' : 'unavailable'}>{data.status}</Status>
+                <p>Add your review</p>
+              </Container>
+              <Container>
+                <Price>${data.price}</Price> {data.priceOld && <Price old>${data.priceOld}</Price>}
+              </Container>
+              <SelectContainer>
+                <Select
+                  labelName="Size"
+                  options={data.sizes}
+                  onChange={setProductInfo}
+                  refForward={register({ required: true })}
+                />
+                <Select
+                  labelName="Color"
+                  options={data.color}
+                  onChange={setProductInfo}
+                  refForward={register({ required: true })}
+                />
+              </SelectContainer>
+              <PriceContainer>
+                <Label kind="small" isEffect={false}>
+                  Qty
+                </Label>
+                <Input
+                  name="quantity"
+                  kind="small"
+                  type="number"
+                  defaultValue={1}
+                  onChange={setProductInfo}
+                  refForward={register({ required: true })}
+                />
+              </PriceContainer>
+              <ButtonContainer>
+                <Button kind="contain" category="primary" uppercase>
+                  Buy now
+                </Button>
+                <Button kind="outline" category="primary" uppercase>
+                  Add to cart
+                </Button>
+              </ButtonContainer>
+              {errors.size && <Alert type="Error" message="Size field is required" />}
+              {errors.color && <Alert type="Error" message="Color field is required" />}
+              <Description>{data.shortDesc}</Description>
+            </Detail>
+          </Product>
+          <Tabs>
+            <div aria-label="Descriptions">{data.desc}</div>
+            <div aria-label="Ratings & Review">
+              {comments.length > 0 ? (
+                <>
+                  <Reviews data={comments} />
+                  {isUserLogged && <ReviewForm />}
+                </>
+              ) : (
+                <p>Nobody has commented and rated this product. Only logged in customer can comment on this product.</p>
+              )}
+            </div>
+          </Tabs>
+        </>
+      )}
     </Wrapper>
   )
 }

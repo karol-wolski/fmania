@@ -13,7 +13,7 @@ interface CartPriceProp {
 
 const CartPriceDetail: React.FC<CartPriceProp> = ({ data }) => {
   const { totalQuantity, totalPrice, deliveryPrice } = data
-  const result = totalPrice + deliveryPrice
+  const result = (totalPrice + deliveryPrice).toFixed(2)
 
   return (
     <Box>
@@ -22,7 +22,7 @@ const CartPriceDetail: React.FC<CartPriceProp> = ({ data }) => {
         <p>
           Price ({totalQuantity} {totalQuantity === 1 ? `item` : `items`})
         </p>
-        <span>${totalPrice}</span>
+        <span>${totalPrice.toFixed(2)}</span>
       </BoxItem>
       <BoxItem>
         <p>Delivery Charge</p> <span>${deliveryPrice}</span>

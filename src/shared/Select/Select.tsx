@@ -1,15 +1,10 @@
 import React, { SelectHTMLAttributes } from 'react'
 import { removeMultiWhiteSpace } from '../../helpers/removeMultiWhiteSpace'
+import { SelectValue } from '../../types/types'
 import { Label, Option, SelectStyle, SelectWrapper } from './Select.style'
-
-type OptionProp = {
-  name: string
-  value: string
-}
-
 interface SelectParam extends SelectHTMLAttributes<HTMLSelectElement> {
   labelName: string
-  options: OptionProp[]
+  options: SelectValue[]
   refForward?: any
 }
 
