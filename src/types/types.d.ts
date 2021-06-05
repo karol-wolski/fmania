@@ -16,9 +16,15 @@ export type PriceType = {
   max: number
 }
 
-type Color = {
+export type SelectValue = {
   name: string
   value: string
+}
+
+export type ProductImages = {
+  id: number
+  name: string
+  imgLink: string
 }
 
 export type ProductType = {
@@ -35,4 +41,22 @@ export type ProductType = {
   category?: string
   subcategory?: string
   color?: Color[] | string
+}
+
+export type SingleProductType = {
+  id: number | string
+  name: string
+  price: number
+  priceOld?: number
+  sizes: SelectValue[]
+  popularity: number[]
+  image: string
+  desc: string
+  shortDesc?: string
+  slug: string
+  category?: string
+  subcategory?: string
+  color: SelectValue[]
+  status?: string
+  images: ProductImages[]
 }

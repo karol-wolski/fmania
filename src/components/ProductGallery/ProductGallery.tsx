@@ -2,13 +2,7 @@ import React from 'react'
 import { default as SlickSlider } from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
-type ProductImages = {
-  id: number | string
-  name: string
-  imgLink: string
-}
-
+import { ProductImages } from '../../types/types'
 interface ProductProps {
   images: ProductImages[]
 }
