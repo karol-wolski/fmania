@@ -7,6 +7,9 @@ import { useForm } from 'react-hook-form'
 import { isInputFocus } from '../../../helpers/isInputFocus'
 import { EMAIL_REGEX } from '../../../constants/constants'
 import Alert from '../../Alert/Alert'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
+import { fetchAsync } from '../../../helpers/fetch'
 
 interface LoginData {
   firstName: string
@@ -32,15 +35,44 @@ const LoginForm: React.FC = () => {
     password: false,
     passwordConfirm: false,
   })
+  const [backendErrorMessage, setBackendErrorMessage] = useState<string>()
 
   const { register, handleSubmit, errors, watch } = useForm<LoginData>()
   const password = useRef({})
   password.current = watch('password', '')
 
-  const onSubmit = (data: any) => console.log(data)
+  const notify = () =>
+    toast('Your account has been successfully created. You can log in now.', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: 'Toastify__toast--success',
+    })
+
+  const onSubmit = (data: any) => {
+    fetchAsync('register', 'POST', data).then(response => {
+      if (response.status) notify()
+      if (response.error) setBackendErrorMessage(response.error)
+    })
+  }
 
   return (
     <Container>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Title>Create New Customer Account</Title>
       <SubTitle>Personal Information</SubTitle>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -87,10 +119,10 @@ const LoginForm: React.FC = () => {
         <FormWrapperCheckbox>
           <Label kind="small" htmlFor="newsletter">
             <Input kind="small" type="checkbox" id="newsletter" name="newsletter" refForward={register()} />
-            Signup for Newsletter
+            Sign up for Newsletter
           </Label>
         </FormWrapperCheckbox>
-        <SubTitle>Signin Information</SubTitle>
+        <SubTitle>Sign in Information</SubTitle>
         <FormWrapper>
           <Input
             kind="medium"
@@ -136,6 +168,7 @@ const LoginForm: React.FC = () => {
           <Alert type="Error" message="Confirm Password should hae at least 8 characters" />
         )}
         {errors.passwordConfirm?.type === 'validate' && <Alert type="Error" message="Password do not match" />}
+        {backendErrorMessage && <Alert type="Error" message={backendErrorMessage} />}
         <Button kind="contain" category="secondary" corner>
           Create an Account
         </Button>
