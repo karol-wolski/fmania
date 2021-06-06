@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { Link } from 'react-router-dom'
 import { Colors } from '../../../shared/Colors'
 const { black100: textColor, blue300: priceColor, grey500: border } = Colors
 
@@ -27,7 +28,7 @@ export const Image = styled.img<ImageProps>`
     `}
 `
 
-export const Title = styled.h3`
+export const Title = styled(Link)`
   font-size: 1.4rem;
   font-weight: 400;
   color: ${textColor};

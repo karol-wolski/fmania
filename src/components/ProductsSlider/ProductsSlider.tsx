@@ -11,6 +11,8 @@ type Item = {
   price: string
   imgLink: string
   border?: boolean
+  slug: string
+  sex: string
 }
 
 export interface ProductsSliderProps {
