@@ -4,7 +4,19 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Slide from './Slide/Slide'
 
-const Slider: React.FC = () => {
+type SingleSlide = {
+  id: number | string
+  title: string
+  subtitle: string
+  link: string
+  imgLink: string
+}
+
+interface Slides {
+  slides: SingleSlide[]
+}
+
+const Slider: React.FC<Slides> = ({ slides }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -15,35 +27,9 @@ const Slider: React.FC = () => {
     autoplay: true,
   }
 
-  const items = [
-    {
-      id: 1,
-      title: '50% Off',
-      subtitle: 'Discount on Women’s Wear',
-      link: '#',
-      imgLink:
-        'https://image.shutterstock.com/z/stock-photo-fashion-clothes-on-clothing-rack-bright-colorful-closet-closeup-of-rainbow-color-choice-of-551997880.jpg',
-    },
-    {
-      id: 2,
-      title: '30% Off',
-      subtitle: 'Discount on Men’s Wear',
-      link: '#',
-      imgLink:
-        'https://image.shutterstock.com/z/stock-photo-fashion-clothes-on-clothing-rack-bright-colorful-closet-closeup-of-rainbow-color-choice-of-551997880.jpg',
-    },
-    {
-      id: 3,
-      title: '20% Off',
-      subtitle: 'Discount on Child’s Wear',
-      link: '#',
-      imgLink:
-        'https://image.shutterstock.com/z/stock-photo-fashion-clothes-on-clothing-rack-bright-colorful-closet-closeup-of-rainbow-color-choice-of-551997880.jpg',
-    },
-  ]
   return (
     <SlickSlider {...settings}>
-      {items.map(item => (
+      {slides.map(item => (
         <Slide key={item.title} {...item} />
       ))}
     </SlickSlider>
