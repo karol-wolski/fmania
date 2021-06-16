@@ -11,3 +11,9 @@ export const Wrapper = styled.div`
     grid-gap: 3rem;
   }
 `
+
+export const Products = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`

@@ -6,6 +6,7 @@ export const Item = styled.div`
   border: 1px solid ${accent};
   padding: 3rem 2rem;
   display: grid;
+  margin-bottom: 1.5rem;
 
   @media (min-width: 568px) {
     grid-template-columns: 1fr 4fr;
