@@ -2,13 +2,13 @@ import React from 'react'
 import { BsEnvelope } from 'react-icons/bs'
 import { GiCheckMark } from 'react-icons/gi'
 import { IoDocumentTextOutline } from 'react-icons/io5'
-import { GetUrlParam } from '../../helpers/getUrlParam'
 import IconRounded from '../../shared/IconRounded/IconRounded'
 import { Wrapper, Heading, Paragraph, ParagraphWithIcon } from './OrderPlaced.style'
+import { useHistory } from 'react-router-dom'
 
 const OrderPlaced: React.FC = () => {
-  const query = GetUrlParam()
-  const orderID = query.get('orderID')
+  const history = useHistory()
+  const orderID = history.location.state
   return (
     <Wrapper>
       <IconRounded>

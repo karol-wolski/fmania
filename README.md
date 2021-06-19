@@ -71,6 +71,7 @@ List the ready features:
   - Add product to cart
   - Remove product from cart
   - Empty cart
+- Checkout shipping page
 - Thank you for order page
 
 List the to do features:
@@ -84,4 +85,3 @@ List the to do features:
 - Loading spinner
 - Pagination
 - Add product to wishlist
-- checkout shipping

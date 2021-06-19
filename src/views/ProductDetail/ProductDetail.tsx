@@ -8,7 +8,7 @@ import { Input } from '../../shared/Input/Input'
 import { Label } from '../../shared/Label/Label'
 import Select from '../../shared/Select/Select'
 import Alert from '../../components/Alert/Alert'
-import { addToLocalStorage, getFromLocalStorage } from '../../helpers/localStorage'
+import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../../helpers/localStorage'
 import { useForm } from 'react-hook-form'
 import {
   Container,
@@ -28,6 +28,9 @@ import {
 import { SingleProductType } from '../../types/types'
 import { fetchAsync } from '../../helpers/fetch'
 import { useParams } from 'react-router'
+import { Redirect } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.min.css'
 
 type ProductItem = {
   id: number | string
@@ -49,6 +52,7 @@ const ProductDetail: React.FC = () => {
   const path = `${gender}/product/${productName}`
   const { register, handleSubmit, errors } = useForm()
   const isUserLogged = getFromLocalStorage('user')
+  const [isRedirect, setIsRedirect] = useState(false)
 
   const [data, setData] = useState<SingleProductType>({
     id: '',
@@ -121,6 +125,18 @@ const ProductDetail: React.FC = () => {
     fetchAsync(`comments/${data.id}`).then(comment => setComments(comment))
   }, [data, setComments])
 
+  const notify = () =>
+    toast('The product has been added to the cart.', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      className: 'Toastify__toast--success',
+    })
+
   const setProductInfo = (e: any) => {
     setProduct({
       ...product,
@@ -154,15 +170,32 @@ const ProductDetail: React.FC = () => {
     const quantityLS = isProduct && getQuantiTyFromLocalStorage(isProduct)
     const newQuantity = quantityLS && sum(parseInt(product.quantity), parseInt(quantityLS))
     quantityLS ? updateQuantity(product.code, newQuantity, products) : addToLocalStorage('cart', product, true)
+    notify()
   }
 
-  const onSubmit = () => addToCart()
+  const buyNow = () => {
+    removeFromLocalStorage('buyNow')
+    addToLocalStorage('buyNow', product, true)
+    setIsRedirect(true)
+  }
 
   return (
     <Wrapper>
+      {isRedirect && <Redirect to="/checkout" />}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       {loaded && (
         <>
-          <Product onSubmit={handleSubmit(onSubmit)}>
+          <Product>
             <ProductGallery images={data.images} />
             <Detail>
               <ProductName>{data.name}</ProductName>
@@ -205,10 +238,10 @@ const ProductDetail: React.FC = () => {
                 />
               </PriceContainer>
               <ButtonContainer>
-                <Button kind="contain" category="primary" uppercase>
+                <Button kind="contain" category="primary" uppercase onClick={handleSubmit(buyNow)}>
                   Buy now
                 </Button>
-                <Button kind="outline" category="primary" uppercase>
+                <Button kind="outline" category="primary" uppercase onClick={handleSubmit(addToCart)}>
                   Add to cart
                 </Button>
               </ButtonContainer>

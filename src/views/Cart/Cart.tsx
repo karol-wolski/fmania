@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import CartEmpty from '../../components/CartEmpty/CartEmpty'
 import CartPriceDetail from '../../components/CartPriceDetail/CartPriceDetail'
 import CartProductList from '../../components/CartProductList/CartProductList'
-import { addToLocalStorage, getFromLocalStorage, removeFromLocalStorage } from '../../helpers/localStorage'
-import { Wrapper } from './Cart.style'
+import { getFromLocalStorage } from '../../helpers/localStorage'
+import { Button } from '../../shared/Button/Button'
+import { removeProduct } from '../../shared/removeProduct'
+import { updateProductQuantity } from '../../shared/updateProductQuantity'
+import { Products, Wrapper } from './Cart.style'
 
 type Product = {
   id: number | string
@@ -17,7 +21,9 @@ type Product = {
 }
 
 const Cart: React.FC = () => {
-  const [products, setProducts] = useState(getFromLocalStorage('cart'))
+  const lsKeyName = 'cart'
+  const [products, setProducts] = useState(getFromLocalStorage(lsKeyName))
+  const [isRedirect, setIsRedirect] = useState(false)
   const totalQuantity =
     products === null ? 0 : products.reduce((total: number, item: any) => parseFloat(item.quantity) + total, 0)
   const totalPrice =
@@ -25,35 +31,29 @@ const Cart: React.FC = () => {
       ? 0
       : products.reduce((total: number, item: any) => parseFloat(item.quantity) * item.price + total, 0) || 0
 
-  const removeProduct = (id: number | string) => {
-    removeFromLocalStorage('cart', id)
-    setProducts(getFromLocalStorage('cart'))
-  }
-
-  const updateQuantity = (id: number | string, quantity: any) => {
-    const index = products.findIndex((product: any) => product.code === id)
-    products[index].quantity = quantity
-    addToLocalStorage('cart', products)
-    setProducts(getFromLocalStorage('cart'))
-  }
-
   return (
     <>
+      {isRedirect && <Redirect to="/checkout" />}
       {products === null ? (
         <CartEmpty />
       ) : (
         <Wrapper>
-          <div>
+          <Products>
             {products.map(({ id, name, image, color, size, price, quantity, code }: Product, index: number) => (
               <CartProductList
                 key={index}
                 data={{ id, name, image, color, size, price, quantity }}
-                removeHandler={() => removeProduct(code)}
-                updateQuantityHandler={e => updateQuantity(code, parseInt(e.target.value))}
+                removeHandler={() => removeProduct(lsKeyName, code, setProducts)}
+                updateQuantityHandler={e =>
+                  updateProductQuantity(lsKeyName, code, parseInt(e.target.value), setProducts)
+                }
               />
             ))}
-          </div>
-          <CartPriceDetail data={{ totalQuantity: totalQuantity, totalPrice: totalPrice, deliveryPrice: 10 }} />
+            <Button kind="contain" category="primary" onClick={() => setIsRedirect(true)}>
+              Go to checkout
+            </Button>
+          </Products>
+          <CartPriceDetail data={{ totalQuantity: totalQuantity, totalPrice: totalPrice, deliveryPrice: 0 }} />
         </Wrapper>
       )}
     </>
