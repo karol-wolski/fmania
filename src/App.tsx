@@ -18,6 +18,7 @@ import OrderPlaced from './views/OrderPlaced/OrderPlaced'
 import { LastLocationProvider } from 'react-router-last-location'
 import PrivateRoute from './shared/PrivateRoute/PrivateRoute'
 import PersonalInformation from './views/MyProfile/PersonalInformation/PersonalInformation'
+import Orders from './views/MyProfile/Orders/Orders'
 
 const displayBreadcrumbs = () => {
   const windowLocationPathname = window.location.pathname
@@ -52,6 +53,7 @@ const App = () => {
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/orderplaced" component={OrderPlaced} />
             <PrivateRoute exact path="/my_profile/personal_information" component={PersonalInformation} />
+            <PrivateRoute exact path="/my_profile/orders" component={Orders} />
             <Route exact path="/:gender/product-:product" component={ProductDetail} />
             <Route exact path="/:gender" component={Product} />
             <Route exact path="/:gender/:category" component={Product} />

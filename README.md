@@ -73,14 +73,15 @@ List the ready features:
   - Empty cart
 - Checkout shipping page
 - Thank you for order page
+- User page:
+  - orders
+  - manage personal information
 
 List the to do features:
 
 - Log in
 - User page:
-  - orders
   - wishlist
-  - manage personal information
   - manage addresses
 - Loading spinner
 - Pagination

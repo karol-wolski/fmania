@@ -1,6 +1,6 @@
 import React from 'react'
 import Sidebar from '../../shared/Sidebar/Sidebar'
-import { Wrapper } from './ProfileWithSidebar.style'
+import { Wrapper, SectionTitle } from './ProfileWithSidebar.style'
 
 interface ProfileWithSidebarProps {
   title: string
@@ -12,7 +12,7 @@ const ProfileWithSidebar: React.FC<ProfileWithSidebarProps> = ({ title, children
     <Wrapper>
       <Sidebar />
       <section>
-        <h2>{title}</h2>
+        <SectionTitle>{title}</SectionTitle>
         {children}
       </section>
     </Wrapper>
