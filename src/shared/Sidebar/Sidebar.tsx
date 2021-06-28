@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineShopping, AiOutlineUser } from 'react-icons/ai'
 import { LinkElem, UL } from './Sidebar.style'
 
 const Sidebar = () => {
@@ -10,6 +10,12 @@ const Sidebar = () => {
           <LinkElem to="/my_profile/personal_information" exact>
             <AiOutlineUser />
             Personal Information
+          </LinkElem>
+        </li>
+        <li>
+          <LinkElem to="/my_profile/orders" exact>
+            <AiOutlineShopping />
+            Orders
           </LinkElem>
         </li>
       </UL>
