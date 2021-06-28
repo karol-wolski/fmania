@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   max-width: 117rem;
   padding: 0 1.5rem 3rem;
+  margin: 0 auto;
 `
 
 export const Heading = styled.p`
