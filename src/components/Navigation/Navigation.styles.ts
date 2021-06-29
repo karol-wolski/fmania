@@ -133,6 +133,7 @@ export const MenuButton = styled.button`
   background-color: transparent;
   color: ${secondary};
   font-size: 1.6rem;
+  cursor: pointer;
   @media (min-width: 768px) {
     display: none;
   }

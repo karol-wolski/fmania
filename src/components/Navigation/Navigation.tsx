@@ -17,6 +17,12 @@ const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const openMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
 
+  const CloseMobileMenu = () => {
+    if (Object.is(isMobileMenuOpen, true)) {
+      setIsMobileMenuOpen(!isMobileMenuOpen)
+    }
+  }
+
   return (
     <Nav>
       <NavWrapper role="navigation">
@@ -26,13 +32,19 @@ const Navigation: React.FC = () => {
         </MenuButton>
         <NavList isOpen={isMobileMenuOpen}>
           <NavItem>
-            <NavLink to="/">Home</NavLink>
+            <NavLink to="/" onClick={CloseMobileMenu}>
+              Home
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/women">Women</NavLink>
+            <NavLink to="/women" onClick={CloseMobileMenu}>
+              Women
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/men">Men</NavLink>
+            <NavLink to="/men" onClick={CloseMobileMenu}>
+              Men
+            </NavLink>
           </NavItem>
         </NavList>
         <SelectGroup isVisible={isMobileMenuOpen}>
