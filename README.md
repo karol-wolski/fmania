@@ -76,10 +76,10 @@ List the ready features:
 - User page:
   - orders
   - manage personal information
+- Log in
 
 List the to do features:
 
-- Log in
 - User page:
   - wishlist
   - manage addresses
