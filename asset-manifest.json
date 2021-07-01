@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/fmania/static/js/main.cf7b3afe.chunk.js",
-    "main.js.map": "/fmania/static/js/main.cf7b3afe.chunk.js.map",
+    "main.js": "/fmania/static/js/main.21e881c4.chunk.js",
+    "main.js.map": "/fmania/static/js/main.21e881c4.chunk.js.map",
     "runtime-main.js": "/fmania/static/js/runtime-main.c7c38773.js",
     "runtime-main.js.map": "/fmania/static/js/runtime-main.c7c38773.js.map",
     "static/css/2.abfdce53.chunk.css": "/fmania/static/css/2.abfdce53.chunk.css",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.c7c38773.js",
     "static/css/2.abfdce53.chunk.css",
     "static/js/2.85177aa9.chunk.js",
-    "static/js/main.cf7b3afe.chunk.js"
+    "static/js/main.21e881c4.chunk.js"
   ]
 }
