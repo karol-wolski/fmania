@@ -20,6 +20,7 @@ export const Image = styled.img`
 `
 
 export const ButtonsWrapper = styled.div`
+  display: flex;
   button:first-of-type,
   a:first-of-type {
     margin-right: 0.5rem;
