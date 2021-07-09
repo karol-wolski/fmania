@@ -65,6 +65,7 @@ List the ready features:
 - Single Product page
   - Product detail
   - Product review
+  - Add product review
 - Registration
 - Breadcrumbs
 - Cart

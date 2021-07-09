@@ -182,4 +182,8 @@ export default createGlobalStyle`
     color: #fff;
     font-size: 1.4rem;
   }
+
+  .ReactStars {
+    margin-bottom: 2.5rem;
+  }
 `
