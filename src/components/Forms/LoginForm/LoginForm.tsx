@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button } from '../../../shared/Button/Button'
 import { Button as LinkButton } from '../../../shared/LinkButton/LinkButton'
 import { Input } from '../../../shared/Input/Input'
@@ -12,6 +12,7 @@ import { fetchAsync } from '../../../helpers/fetch'
 import { addToLocalStorage } from '../../../helpers/localStorage'
 import { Redirect } from 'react-router-dom'
 import isAuthorized from '../../../helpers/isAuthorized'
+import { UserContext } from '../../../context/UserContext'
 
 interface LoginData {
   email: string
@@ -31,11 +32,13 @@ const LoginForm: React.FC = () => {
 
   const { register, handleSubmit, errors } = useForm<LoginData>()
   const [backendErrorMessage, setBackendErrorMessage] = useState<string>()
+  const { setIsLoggedIn } = useContext(UserContext)
 
   const onSubmit = (data: any) => {
     fetchAsync('login', 'POST', data).then(response => {
       if (response.token) {
         addToLocalStorage('authToken', response.token)
+        setIsLoggedIn((state: boolean) => !state)
       } else {
         setBackendErrorMessage(response.error)
       }
