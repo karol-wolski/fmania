@@ -3,16 +3,14 @@ import { HeaderWrapper, Image, ButtonsWrapper, Input, Form, FormBtn } from './He
 import Logo from '../../images/logo.svg'
 import { Button as LinkButton } from '../../shared/LinkButton/LinkButton'
 import { IoMdSearch, IoMdLogIn, IoMdPersonAdd, IoMdLogOut, IoMdPerson } from 'react-icons/io'
-import { removeFromLocalStorage } from '../../helpers/localStorage'
 import { Button } from '../../shared/Button/Button'
+import { Logout } from '../../helpers/Logout'
 import { UserContext } from '../../context/UserContext'
-import { useHistory } from 'react-router-dom'
 
 const Header: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
   const displayText = windowWidth > 400
-  let history = useHistory()
 
   useEffect(() => {
     function reportWindowSize() {
@@ -22,11 +20,6 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('resize', reportWindowSize)
   }, [])
 
-  const Logout = () => {
-    removeFromLocalStorage('authToken')
-    setIsLoggedIn((state: boolean) => !state)
-    history.push('/login')
-  }
   return (
     <>
       <HeaderWrapper>
@@ -46,7 +39,7 @@ const Header: React.FC = () => {
               <LinkButton kind="contain" category="secondary" link="/my_profile" corner>
                 {displayText ? 'Profile' : <IoMdPerson />}
               </LinkButton>
-              <Button kind="contain" category="primary" onClick={Logout} corner>
+              <Button kind="contain" category="primary" onClick={() => Logout(setIsLoggedIn)} corner>
                 {displayText ? 'Log out' : <IoMdLogOut />}
               </Button>
             </>
