@@ -5,7 +5,7 @@ import { Button } from '../../shared/LinkButton/LinkButton'
 import { Div } from './MyProfile.style'
 
 const MyProfile = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
+  const { isLoggedIn } = useContext(UserContext)
   return (
     <>
       {!isLoggedIn ? (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ReviewForm from '../../components/Forms/ReviewForm/ReviewForm'
 import ProductGallery from '../../components/ProductGallery/ProductGallery'
 import Reviews from '../../components/Reviews/Reviews'
@@ -31,6 +31,7 @@ import { useParams } from 'react-router'
 import { Redirect } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
+import { UserContext } from '../../context/UserContext'
 
 type ProductItem = {
   id: number | string
@@ -51,7 +52,7 @@ const ProductDetail: React.FC = () => {
   const { gender, product: productName } = useParams<routerParam>()
   const path = `${gender}/product/${productName}`
   const { register, handleSubmit, errors } = useForm()
-  const isUserLogged = getFromLocalStorage('user')
+  const { isLoggedIn } = useContext(UserContext)
   const [isRedirect, setIsRedirect] = useState(false)
 
   const [data, setData] = useState<SingleProductType>({
@@ -253,13 +254,11 @@ const ProductDetail: React.FC = () => {
           <Tabs>
             <div aria-label="Descriptions">{data.desc}</div>
             <div aria-label="Ratings & Review">
-              {comments.length > 0 ? (
-                <>
-                  <Reviews data={comments} />
-                  {isUserLogged && <ReviewForm />}
-                </>
+              {comments.length > 0 ? <Reviews data={comments} /> : <p>Nobody has commented and rated this product.</p>}
+              {isLoggedIn ? (
+                <ReviewForm productId={data.id} />
               ) : (
-                <p>Nobody has commented and rated this product. Only logged in customer can comment on this product.</p>
+                <p>Only logged-in customers can comment on this product.</p>
               )}
             </div>
           </Tabs>
