@@ -7,7 +7,7 @@ import { GetProductPath } from '../../helpers/getProductPath'
 import { getUniqueValueFromArray } from '../../helpers/getUniqueValueFromArray'
 import { request } from '../../helpers/request'
 import { CheckboxType, LinksType, ProductType } from '../../types/types'
-import { Wrapper, Column } from './Product.style'
+import { Wrapper } from './Product.style'
 
 interface routerParam {
   gender: string
@@ -200,9 +200,7 @@ const ProductPage: React.FC = () => {
       {isLoaded && (
         <>
           <Filters links={Links} size={Size} color={Color} price={Price} callback={handleSetFilters} />
-          <Column>
-            <Product title={gender} data={data} />
-          </Column>
+          <Product title={gender} data={data} />
         </>
       )}
     </Wrapper>
