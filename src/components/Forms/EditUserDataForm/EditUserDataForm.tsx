@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { ToastContainer, toast } from 'react-toastify'
 import { EMAIL_REGEX } from '../../../constants/constants'
@@ -13,7 +13,8 @@ import { fetchAsync } from '../../../helpers/fetch'
 import 'react-toastify/dist/ReactToastify.min.css'
 import { useEffect } from 'react'
 import { Redirect } from 'react-router-dom'
-import { removeFromLocalStorage } from '../../../helpers/localStorage'
+import { UserContext } from '../../../context/UserContext'
+import { Logout } from '../../../helpers/Logout'
 
 interface FormField {
   [firstName: string]: string
@@ -44,20 +45,19 @@ const EditUserDataForm = () => {
     telephone: '',
   })
 
-  const [inNotLogged, setIsNotLogged] = useState(false)
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
   const { register, handleSubmit, errors } = useForm<FormField>()
   const [backendErrorMessage, setBackendErrorMessage] = useState<string>()
 
   useEffect(() => {
     fetchAsync('user', 'GET').then(data => {
       if (data.statusCode === 401) {
-        setIsNotLogged(true)
-        removeFromLocalStorage('authToken')
+        Logout(setIsLoggedIn)
       } else {
         setUser(data)
       }
     })
-  }, [])
+  }, [setIsLoggedIn])
 
   const notify = () =>
     toast('Your account has been successfully updated.', {
@@ -79,98 +79,103 @@ const EditUserDataForm = () => {
   }
   return (
     <>
-      {inNotLogged && <Redirect to="/login" />}
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-      {user !== undefined && (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <FormWrapper style={{ gridArea: '1/1/1/1' }}>
-            <Input
-              kind="medium"
-              name="firstName"
-              id="first-name"
-              type="text"
-              autoComplete="first-name"
-              onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
-              onChange={e => isInputFocus(e, isActive, setIsActive, true)}
-              onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
-              refForward={register({ required: true, minLength: 3 })}
-              defaultValue={user.firstName}
-            />
-            <Label kind="medium" isActive={isActive.firstName}>
-              First Name*
-            </Label>
-            {errors.firstName && <Alert type="Error" message="First Name is required" />}
-          </FormWrapper>
-          <FormWrapper style={{ gridArea: '1/2/1/2' }}>
-            <Input
-              kind="medium"
-              name="lastName"
-              id="last-name"
-              type="text"
-              autoComplete="family-name"
-              onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
-              onChange={e => isInputFocus(e, isActive, setIsActive, true)}
-              onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
-              refForward={register({ required: true, minLength: 2 })}
-              defaultValue={user.lastName}
-            />
-            <Label kind="medium" isActive={isActive.lastName}>
-              Last Name*
-            </Label>
-            {errors.lastName && <Alert type="Error" message="Last Name is required" />}
-          </FormWrapper>
-          <FormWrapper style={{ gridArea: '2/1/2/1' }}>
-            <Input
-              kind="medium"
-              name="email"
-              type="email"
-              autoComplete="email"
-              onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
-              onChange={e => isInputFocus(e, isActive, setIsActive, true)}
-              onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
-              refForward={register({ required: true, pattern: EMAIL_REGEX })}
-              defaultValue={user.email}
-            />
-            <Label kind="medium" isActive={isActive.email}>
-              Email*
-            </Label>
-            {errors.email?.type === 'required' && <Alert type="Error" message="Email is required" />}
-            {errors.email?.type === 'pattern' && (
-              <Alert type="Error" message="Please enter your email address in format: yourname@domena.com" />
-            )}
-          </FormWrapper>
-          <FormWrapper style={{ gridArea: '2/2/2/2' }}>
-            <Input
-              kind="medium"
-              name="telephone"
-              type="tel"
-              autoComplete="tel"
-              onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
-              onChange={e => isInputFocus(e, isActive, setIsActive, true)}
-              onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
-              refForward={register({ required: true })}
-              defaultValue={user.telephone}
-            />
-            <Label kind="medium" isActive={isActive.telephone}>
-              Telephone*
-            </Label>
-            {errors.telephone && <Alert type="Error" message="Telephone number is required" />}
-          </FormWrapper>
-          <Button kind="contain" category="primary">
-            Save
-          </Button>
-          {backendErrorMessage && <Alert type="Error" message={backendErrorMessage} />}
-        </Form>
+      {!isLoggedIn ? (
+        <Redirect to="/login" />
+      ) : (
+        <>
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          {user !== undefined && (
+            <Form onSubmit={handleSubmit(onSubmit)}>
+              <FormWrapper style={{ gridArea: '1/1/1/1' }}>
+                <Input
+                  kind="medium"
+                  name="firstName"
+                  id="first-name"
+                  type="text"
+                  autoComplete="first-name"
+                  onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onChange={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
+                  refForward={register({ required: true, minLength: 3 })}
+                  defaultValue={user.firstName}
+                />
+                <Label kind="medium" isActive={isActive.firstName}>
+                  First Name*
+                </Label>
+                {errors.firstName && <Alert type="Error" message="First Name is required" />}
+              </FormWrapper>
+              <FormWrapper style={{ gridArea: '1/2/1/2' }}>
+                <Input
+                  kind="medium"
+                  name="lastName"
+                  id="last-name"
+                  type="text"
+                  autoComplete="family-name"
+                  onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onChange={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
+                  refForward={register({ required: true, minLength: 2 })}
+                  defaultValue={user.lastName}
+                />
+                <Label kind="medium" isActive={isActive.lastName}>
+                  Last Name*
+                </Label>
+                {errors.lastName && <Alert type="Error" message="Last Name is required" />}
+              </FormWrapper>
+              <FormWrapper style={{ gridArea: '2/1/2/1' }}>
+                <Input
+                  kind="medium"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onChange={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
+                  refForward={register({ required: true, pattern: EMAIL_REGEX })}
+                  defaultValue={user.email}
+                />
+                <Label kind="medium" isActive={isActive.email}>
+                  Email*
+                </Label>
+                {errors.email?.type === 'required' && <Alert type="Error" message="Email is required" />}
+                {errors.email?.type === 'pattern' && (
+                  <Alert type="Error" message="Please enter your email address in format: yourname@domena.com" />
+                )}
+              </FormWrapper>
+              <FormWrapper style={{ gridArea: '2/2/2/2' }}>
+                <Input
+                  kind="medium"
+                  name="telephone"
+                  type="tel"
+                  autoComplete="tel"
+                  onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onChange={e => isInputFocus(e, isActive, setIsActive, true)}
+                  onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
+                  refForward={register({ required: true })}
+                  defaultValue={user.telephone}
+                />
+                <Label kind="medium" isActive={isActive.telephone}>
+                  Telephone*
+                </Label>
+                {errors.telephone && <Alert type="Error" message="Telephone number is required" />}
+              </FormWrapper>
+              <Button kind="contain" category="primary">
+                Save
+              </Button>
+              {backendErrorMessage && <Alert type="Error" message={backendErrorMessage} />}
+            </Form>
+          )}
+        </>
       )}
     </>
   )
