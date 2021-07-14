@@ -6,6 +6,7 @@ import { convertArrayToString } from '../../helpers/convertArrayToString'
 import { GetProductPath } from '../../helpers/getProductPath'
 import { getUniqueValueFromArray } from '../../helpers/getUniqueValueFromArray'
 import { request } from '../../helpers/request'
+import Spinner from '../../shared/Spinner/Spinner'
 import { CheckboxType, LinksType, ProductType } from '../../types/types'
 import { Wrapper } from './Product.style'
 
@@ -23,6 +24,7 @@ const ProductPage: React.FC = () => {
   const [filterCategoryData, setFilterCategoryData] = useState<LinksType[]>([])
   const [maxPrice, setMaxPrice] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState({
     color: [] as string[],
     size: [] as string[],
@@ -143,7 +145,10 @@ const ProductPage: React.FC = () => {
     setSizes(dataFilter)
     setColors(dataFilter)
     setLinks(dataFilter)
-    if (dataFilter.length > 0) setIsLoaded(true)
+    if (dataFilter.length > 0) {
+      setIsLoading(false)
+      setIsLoaded(true)
+    }
   }, [data, dataFilter, setLinks])
 
   const removeArrayElement = (array: any[], element: any) => {
@@ -195,15 +200,19 @@ const ProductPage: React.FC = () => {
     min: 0,
     max: maxPrice,
   }
+
   return (
-    <Wrapper>
-      {isLoaded && (
-        <>
-          <Filters links={Links} size={Size} color={Color} price={Price} callback={handleSetFilters} />
-          <Product title={gender} data={data} />
-        </>
-      )}
-    </Wrapper>
+    <>
+      <Spinner isLoading={isLoading} />
+      <Wrapper>
+        {isLoaded && (
+          <>
+            <Filters links={Links} size={Size} color={Color} price={Price} callback={handleSetFilters} />
+            <Product title={gender} data={data} />
+          </>
+        )}
+      </Wrapper>
+    </>
   )
 }
 

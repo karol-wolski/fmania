@@ -6,10 +6,12 @@ import { Span } from './Orders.style'
 import { Redirect } from 'react-router-dom'
 import { UserContext } from '../../../context/UserContext'
 import { Logout } from '../../../helpers/Logout'
+import Spinner from '../../../shared/Spinner/Spinner'
 
 const Orders: React.FC = () => {
   const [orders, setOrders] = useState([])
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext)
 
   useEffect(() => {
@@ -18,7 +20,8 @@ const Orders: React.FC = () => {
         Logout(setIsLoggedIn)
       } else {
         setOrders(response)
-        setIsLoaded(true)
+        setIsLoaded(state => !state)
+        setIsLoading(state => !state)
       }
     })
   }, [setIsLoggedIn])
@@ -27,18 +30,18 @@ const Orders: React.FC = () => {
       {!isLoggedIn ? (
         <Redirect to="/login" />
       ) : (
-        isLoaded && (
-          <ProfileWithSidebar title="Orders">
-            {orders.length > 0 ? (
+        <ProfileWithSidebar title="Orders">
+          <Spinner isLoading={isLoading} />
+          {isLoaded &&
+            (orders.length > 0 ? (
               <OrdersList orders={orders} />
             ) : (
               <>
                 <Span>You do not have any orders!</Span>
                 <Span> Do your first shopping :)</Span>
               </>
-            )}
-          </ProfileWithSidebar>
-        )
+            ))}
+        </ProfileWithSidebar>
       )}
     </>
   )
