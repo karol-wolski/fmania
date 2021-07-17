@@ -32,6 +32,7 @@ import { Redirect } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.min.css'
 import { UserContext } from '../../context/UserContext'
+import Spinner from '../../shared/Spinner/Spinner'
 
 type ProductItem = {
   id: number | string
@@ -90,11 +91,13 @@ const ProductDetail: React.FC = () => {
   })
   const [comments, setComments] = useState([])
   const [loaded, setLoaded] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     fetchAsync(`products/${path}`).then(data => {
       setData(data[0])
-      setLoaded(true)
+      setLoaded(state => !state)
+      setIsLoading(state => !state)
     })
   }, [path])
 
@@ -194,6 +197,7 @@ const ProductDetail: React.FC = () => {
         draggable
         pauseOnHover
       />
+      <Spinner isLoading={isLoading} />
       {loaded && (
         <>
           <Product>

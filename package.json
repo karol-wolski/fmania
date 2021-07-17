@@ -30,6 +30,7 @@
     "react-router-last-location": "^2.0.1",
     "react-scripts": "4.0.1",
     "react-slick": "^0.28.0",
+    "react-spinners": "^0.11.0",
     "react-toastify": "^7.0.4",
     "slick-carousel": "^1.8.1",
     "styled-normalize": "^8.0.7",

@@ -78,12 +78,12 @@ List the ready features:
   - orders
   - manage personal information
 - Log in
+- Loading spinner
 
 List the to do features:
 
 - User page:
   - wishlist
   - manage addresses
-- Loading spinner
 - Pagination
 - Add product to wishlist
