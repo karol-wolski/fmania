@@ -10,7 +10,7 @@ export const addToLocalStorage = (key: string, value: any, addItemToArray: boole
   }
 }
 
-export const removeFromLocalStorage = (key: string, value: any | undefined = undefined) => {
+export const removeFromLocalStorage = (key: string, value: number | string | undefined = undefined) => {
   if (value) {
     let existingItem = getFromLocalStorage(key)
     existingItem.splice(
