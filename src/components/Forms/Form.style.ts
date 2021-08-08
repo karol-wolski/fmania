@@ -30,7 +30,7 @@ export const Title = styled.h2`
   color: ${TitleColor};
 `
 
-export const SubTitle = styled.h2`
+export const SubTitle = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-size: 1.8rem;
   font-weight: 400;

@@ -78,6 +78,7 @@ const LoginForm: React.FC = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormWrapper>
           <Input
+            id="firstName"
             kind="medium"
             name="firstName"
             type="text"
@@ -85,12 +86,13 @@ const LoginForm: React.FC = () => {
             onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
             refForward={register({ required: true, minLength: 3 })}
           />
-          <Label kind="medium" isActive={isActive.firstName}>
+          <Label htmlFor="firstName" kind="medium" isActive={isActive.firstName}>
             First Name*
           </Label>
         </FormWrapper>
         <FormWrapper>
           <Input
+            id="lastName"
             kind="medium"
             name="lastName"
             type="text"
@@ -99,12 +101,13 @@ const LoginForm: React.FC = () => {
             onChange={e => isInputFocus(e, isActive, setIsActive, true)}
             refForward={register({ required: true, minLength: 2 })}
           />
-          <Label kind="medium" isActive={isActive.lastName}>
+          <Label htmlFor="lastName" kind="medium" isActive={isActive.lastName}>
             Last Name*
           </Label>
         </FormWrapper>
         <FormWrapper>
           <Input
+            id="email"
             kind="medium"
             name="email"
             type="email"
@@ -112,7 +115,7 @@ const LoginForm: React.FC = () => {
             onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
             refForward={register({ required: true, pattern: EMAIL_REGEX })}
           />
-          <Label kind="medium" isActive={isActive.email}>
+          <Label htmlFor="email" kind="medium" isActive={isActive.email}>
             Email*
           </Label>
         </FormWrapper>
@@ -125,6 +128,7 @@ const LoginForm: React.FC = () => {
         <SubTitle>Sign in Information</SubTitle>
         <FormWrapper>
           <Input
+            id="password"
             kind="medium"
             name="password"
             type="password"
@@ -132,12 +136,13 @@ const LoginForm: React.FC = () => {
             onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
             refForward={register({ required: true, minLength: 8 })}
           />
-          <Label kind="medium" isActive={isActive.password}>
+          <Label htmlFor="password" kind="medium" isActive={isActive.password}>
             Password*
           </Label>
         </FormWrapper>
         <FormWrapper>
           <Input
+            id="passwordConfirm"
             kind="medium"
             name="passwordConfirm"
             type="password"
@@ -149,7 +154,7 @@ const LoginForm: React.FC = () => {
               validate: value => value === password.current || 'The passwords do not match',
             })}
           />
-          <Label kind="medium" isActive={isActive.passwordConfirm}>
+          <Label htmlFor="passwordConfirm" kind="medium" isActive={isActive.passwordConfirm}>
             Confirm Password*
           </Label>
         </FormWrapper>
@@ -165,7 +170,7 @@ const LoginForm: React.FC = () => {
         )}
         {errors.passwordConfirm?.type === 'required' && <Alert type="Error" message="Confirm Password is required" />}
         {errors.passwordConfirm?.type === 'minLength' && (
-          <Alert type="Error" message="Confirm Password should hae at least 8 characters" />
+          <Alert type="Error" message="Confirm Password should have at least 8 characters" />
         )}
         {errors.passwordConfirm?.type === 'validate' && <Alert type="Error" message="Password do not match" />}
         {backendErrorMessage && <Alert type="Error" message={backendErrorMessage} />}
