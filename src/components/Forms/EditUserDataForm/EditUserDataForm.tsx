@@ -100,7 +100,7 @@ const EditUserDataForm = () => {
                 <Input
                   kind="medium"
                   name="firstName"
-                  id="first-name"
+                  id="firstName"
                   type="text"
                   autoComplete="first-name"
                   onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -109,7 +109,7 @@ const EditUserDataForm = () => {
                   refForward={register({ required: true, minLength: 3 })}
                   defaultValue={user.firstName}
                 />
-                <Label kind="medium" isActive={isActive.firstName}>
+                <Label htmlFor="firstName" kind="medium" isActive={isActive.firstName}>
                   First Name*
                 </Label>
                 {errors.firstName && <Alert type="Error" message="First Name is required" />}
@@ -118,7 +118,7 @@ const EditUserDataForm = () => {
                 <Input
                   kind="medium"
                   name="lastName"
-                  id="last-name"
+                  id="lastName"
                   type="text"
                   autoComplete="family-name"
                   onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -127,7 +127,7 @@ const EditUserDataForm = () => {
                   refForward={register({ required: true, minLength: 2 })}
                   defaultValue={user.lastName}
                 />
-                <Label kind="medium" isActive={isActive.lastName}>
+                <Label htmlFor="lastName" kind="medium" isActive={isActive.lastName}>
                   Last Name*
                 </Label>
                 {errors.lastName && <Alert type="Error" message="Last Name is required" />}
@@ -136,6 +136,7 @@ const EditUserDataForm = () => {
                 <Input
                   kind="medium"
                   name="email"
+                  id="email"
                   type="email"
                   autoComplete="email"
                   onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -144,7 +145,7 @@ const EditUserDataForm = () => {
                   refForward={register({ required: true, pattern: EMAIL_REGEX })}
                   defaultValue={user.email}
                 />
-                <Label kind="medium" isActive={isActive.email}>
+                <Label htmlFor="email" kind="medium" isActive={isActive.email}>
                   Email*
                 </Label>
                 {errors.email?.type === 'required' && <Alert type="Error" message="Email is required" />}
@@ -156,6 +157,7 @@ const EditUserDataForm = () => {
                 <Input
                   kind="medium"
                   name="telephone"
+                  id="telephone"
                   type="tel"
                   autoComplete="tel"
                   onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -164,7 +166,7 @@ const EditUserDataForm = () => {
                   refForward={register({ required: true })}
                   defaultValue={user.telephone}
                 />
-                <Label kind="medium" isActive={isActive.telephone}>
+                <Label htmlFor="telephone" kind="medium" isActive={isActive.telephone}>
                   Telephone*
                 </Label>
                 {errors.telephone && <Alert type="Error" message="Telephone number is required" />}

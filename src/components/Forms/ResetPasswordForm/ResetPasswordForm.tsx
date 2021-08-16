@@ -31,6 +31,7 @@ const ResetPasswordForm: React.FC = () => {
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FormWrapper>
           <Input
+            id="email"
             kind="medium"
             name="email"
             type="email"
@@ -38,7 +39,7 @@ const ResetPasswordForm: React.FC = () => {
             onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
             refForward={register({ required: true, pattern: EMAIL_REGEX })}
           />
-          <Label kind="medium" isActive={isActive.email}>
+          <Label htmlFor="email" kind="medium" isActive={isActive.email}>
             Email*
           </Label>
           {errors.email?.type === 'required' && <ErrorMessage type="Error" message="Email field is required" />}

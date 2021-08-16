@@ -58,6 +58,7 @@ const LoginForm: React.FC = () => {
             <FormWrapper>
               <Input
                 kind="medium"
+                id="email"
                 name="email"
                 type="email"
                 onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -65,13 +66,14 @@ const LoginForm: React.FC = () => {
                 onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
                 refForward={register({ required: true, pattern: EMAIL_REGEX })}
               />
-              <Label kind="medium" isActive={isActive.email}>
+              <Label htmlFor="email" kind="medium" isActive={isActive.email}>
                 Email*
               </Label>
             </FormWrapper>
             <FormWrapper>
               <Input
                 kind="medium"
+                id="password"
                 name="password"
                 type="password"
                 onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -79,12 +81,16 @@ const LoginForm: React.FC = () => {
                 onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
                 refForward={register({ required: true })}
               />
-              <Label kind="medium" isActive={isActive.password}>
+              <Label htmlFor="password" kind="medium" isActive={isActive.password}>
                 Password*
               </Label>
               {errors.email?.type === 'required' && <ErrorMessage type="Error" message="Email field is required" />}
               {errors.email?.type === 'pattern' && (
-                <ErrorMessage type="Error" message="Please enter your email address in format: yourname@domena.com" />
+                <ErrorMessage
+                  role="alert"
+                  type="Error"
+                  message="Please enter your email address in format: yourname@domena.com"
+                />
               )}
               {errors.password && <ErrorMessage type="Error" message="Password field is required" />}
             </FormWrapper>

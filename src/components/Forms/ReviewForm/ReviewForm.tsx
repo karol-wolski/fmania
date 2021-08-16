@@ -52,7 +52,6 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
   const onSubmit = (data: any) => {
     data.mark = mark
     data.productId = productId
-    console.log(data)
     fetchAsync('comments', 'POST', data).then(response => {
       if (response.statusCode === 200) notify()
       if (response.error) setBackendErrorMessage(response.error)
@@ -89,6 +88,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
         <ReactStars {...ReactStarsParams} name="mark" />
         <FormWrapper>
           <Input
+            id="title"
             kind="medium"
             name="title"
             type="text"
@@ -97,23 +97,25 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ productId }) => {
             onChange={e => isInputFocus(e, isActive, setIsActive, true)}
             refForward={register({ required: true, minLength: 2 })}
           />
-          <Label kind="medium" isActive={isActive.title}>
+          <Label htmlFor="title" kind="medium" isActive={isActive.title}>
             Title*
           </Label>
         </FormWrapper>
         <FormWrapper>
           <Textarea
+            id="review"
             name="review"
             refForward={register({ required: true })}
             onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
             onBlur={e => isInputFocus(e, isActive, setIsActive, false)}
             onChange={e => isInputFocus(e, isActive, setIsActive, true)}
           />
-          <Label kind="medium" isActive={isActive.review}>
+          <Label htmlFor="review" kind="medium" isActive={isActive.review}>
             Review*
           </Label>
         </FormWrapper>
-        {errors.title && <Alert type="Error" message="Title is required" />}
+        {errors.title?.type === 'required' && <Alert type="Error" message="Title is required" />}
+        {errors.title?.type === 'minLength' && <Alert type="Error" message="Title should have at least 2 characters" />}
         {errors.review && <Alert type="Error" message="Review is required" />}
         {errors.mark && <Alert type="Error" message="Mark is required" />}
         {backendErrorMessage && <Alert type="Error" message={backendErrorMessage} />}
