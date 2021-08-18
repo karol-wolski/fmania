@@ -1,5 +1,10 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import RegisterForm from './RegisterForm'
+import server from '../../../../test/msw/server'
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 describe('Register Form', () => {
   it('should be in the document', () => {
@@ -47,7 +52,7 @@ describe('Register Form', () => {
   it('should accept text in first name field', () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="firstName"]')
+    const Input = container.querySelector('input[name="firstName"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test' } })
     expect(Input.value).toMatch('test')
@@ -56,7 +61,7 @@ describe('Register Form', () => {
   it('should accept text in last name field', () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="lastName"]')
+    const Input = container.querySelector('input[name="lastName"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test' } })
     expect(Input.value).toMatch('test')
@@ -65,7 +70,7 @@ describe('Register Form', () => {
   it('should accept text in email field', () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="email"]')
+    const Input = container.querySelector('input[name="email"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test@test.com' } })
     expect(Input.value).toMatch('test')
@@ -74,7 +79,7 @@ describe('Register Form', () => {
   it('should accept text in password field', () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="password"]')
+    const Input = container.querySelector('input[name="password"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test' } })
     expect(Input.value).toMatch('test')
@@ -83,7 +88,7 @@ describe('Register Form', () => {
   it('should accept text in confirm password field', () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="passwordConfirm"]')
+    const Input = container.querySelector('input[name="passwordConfirm"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test' } })
     expect(Input.value).toMatch('test')
@@ -113,7 +118,7 @@ describe('Register Form', () => {
   it('should display error message if first name have empty value', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="firstName"]')
+    const Input = container.querySelector('input[name="firstName"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Create an Account/i)
@@ -128,7 +133,7 @@ describe('Register Form', () => {
   it('should display error message if last name have empty value', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="lastName"]')
+    const Input = container.querySelector('input[name="lastName"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Create an Account/i)
@@ -143,7 +148,7 @@ describe('Register Form', () => {
   it('should display error message if email have empty value', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="email"]')
+    const Input = container.querySelector('input[name="email"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Create an Account/i)
@@ -158,7 +163,7 @@ describe('Register Form', () => {
   it('should display error message if email have incorrect pattern', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="email"]')
+    const Input = container.querySelector('input[name="email"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test' } })
     expect(Input.value).toMatch('test')
@@ -175,7 +180,7 @@ describe('Register Form', () => {
   it('should display error message if password have empty value', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="password"]')
+    const Input = container.querySelector('input[name="password"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Create an Account/i)
@@ -190,7 +195,7 @@ describe('Register Form', () => {
   it('should display error message if password have value at least 8 characters', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="password"]')
+    const Input = container.querySelector('input[name="password"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test123' } })
     expect(Input.value.length).toBeLessThan(8)
@@ -207,7 +212,7 @@ describe('Register Form', () => {
   it('should display error message if confirm password have empty value', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="passwordConfirm"]')
+    const Input = container.querySelector('input[name="passwordConfirm"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Create an Account/i)
@@ -222,7 +227,7 @@ describe('Register Form', () => {
   it('should display error message if confirm password have value at least 8 characters', async () => {
     const { container } = render(<RegisterForm />)
 
-    const Input = container.querySelector('input[name="passwordConfirm"]')
+    const Input = container.querySelector('input[name="passwordConfirm"]') as HTMLInputElement
     fireEvent.change(Input, { target: { value: 'test123' } })
     expect(Input.value.length).toBeLessThan(8)
     const Button = screen.getByRole('button')
@@ -237,9 +242,9 @@ describe('Register Form', () => {
 
   it('should display error message if password and confirm password values are not same', async () => {
     const { container } = render(<RegisterForm />)
-    const Password = container.querySelector('input[name="password"]')
+    const Password = container.querySelector('input[name="password"]') as HTMLInputElement
     fireEvent.change(Password, { target: { value: 'test123' } })
-    const PasswordConfirm = container.querySelector('input[name="passwordConfirm"]')
+    const PasswordConfirm = container.querySelector('input[name="passwordConfirm"]') as HTMLInputElement
     fireEvent.change(PasswordConfirm, { target: { value: 'test1234' } })
     expect(Password.value).not.toMatch(PasswordConfirm.value)
     const Button = screen.getByRole('button')
@@ -255,16 +260,16 @@ describe('Register Form', () => {
   it('should not display error when value is valid', async () => {
     const { container } = render(<RegisterForm />)
 
-    const FirstName = container.querySelector('input[name="firstName"]')
+    const FirstName = container.querySelector('input[name="firstName"]') as HTMLInputElement
     fireEvent.change(FirstName, { target: { value: 'John' } })
-    const LastName = container.querySelector('input[name="lastName"]')
+    const LastName = container.querySelector('input[name="lastName"]') as HTMLInputElement
     fireEvent.change(LastName, { target: { value: 'Doe' } })
-    const Email = container.querySelector('input[name="email"]')
+    const Email = container.querySelector('input[name="email"]') as HTMLInputElement
     fireEvent.change(Email, { target: { value: 'john@doe.com' } })
-    const Password = container.querySelector('input[name="password"]')
-    fireEvent.change(Password, { target: { value: 'test1234' } })
-    const ConfirmPassword = container.querySelector('input[name="passwordConfirm"]')
-    fireEvent.change(ConfirmPassword, { target: { value: 'test1234' } })
+    const Password = container.querySelector('input[name="password"]') as HTMLInputElement
+    fireEvent.change(Password, { target: { value: 'test12345' } })
+    const ConfirmPassword = container.querySelector('input[name="passwordConfirm"]') as HTMLInputElement
+    fireEvent.change(ConfirmPassword, { target: { value: 'test12345' } })
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Create an Account/i)
     expect(Button).toBeInTheDocument()
@@ -289,7 +294,7 @@ describe('Register Form', () => {
     const ErrorMessageConfirmPasswordCharacters = await waitFor(() =>
       screen.queryByText(MessageConfirmPasswordCharacters),
     )
-    const ErrorMessagePasswordsDoNotMatch = await waitFor(() => screen.queryByText(MessageConfirmPasswordCharacters))
+    const ErrorMessagePasswordsDoNotMatch = await waitFor(() => screen.queryByText(MessagePasswordsDoNotMatch))
     expect(ErrorMessageFirstNameRequired).not.toBeInTheDocument()
     expect(ErrorMessageLastNameRequired).not.toBeInTheDocument()
     expect(ErrorMessageEmailRequired).not.toBeInTheDocument()
@@ -299,5 +304,28 @@ describe('Register Form', () => {
     expect(ErrorMessagePasswordCharacters).not.toBeInTheDocument()
     expect(ErrorMessageConfirmPasswordCharacters).not.toBeInTheDocument()
     expect(ErrorMessagePasswordsDoNotMatch).not.toBeInTheDocument()
+  })
+
+  it('should display toast after click button if all is ok', async () => {
+    const { container } = render(<RegisterForm />)
+
+    const FirstName = container.querySelector('input[name="firstName"]') as HTMLInputElement
+    fireEvent.change(FirstName, { target: { value: 'John' } })
+    const LastName = container.querySelector('input[name="lastName"]') as HTMLInputElement
+    fireEvent.change(LastName, { target: { value: 'Doe' } })
+    const Email = container.querySelector('input[name="email"]') as HTMLInputElement
+    fireEvent.change(Email, { target: { value: 'john@doe.com' } })
+    const Password = container.querySelector('input[name="password"]') as HTMLInputElement
+    fireEvent.change(Password, { target: { value: '123456789' } })
+    const ConfirmPassword = container.querySelector('input[name="passwordConfirm"]') as HTMLInputElement
+    fireEvent.change(ConfirmPassword, { target: { value: '123456789' } })
+    const Button = screen.getByRole('button')
+    expect(Button).toHaveTextContent(/Create an Account/i)
+    expect(Button).toBeInTheDocument()
+    fireEvent.submit(Button)
+    const toast = await waitFor(() =>
+      screen.getByText('Your account has been successfully created. You can log in now.'),
+    )
+    expect(toast).toBeInTheDocument()
   })
 })

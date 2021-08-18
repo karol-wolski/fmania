@@ -17,7 +17,7 @@ describe('Reset Password Form', () => {
   it('should accept text in email field', () => {
     const { container } = render(<ResetPasswordForm />)
 
-    const Input = container.querySelector('input[name="email"]')
+    const Input = container.querySelector('input[name="email"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test@test.com' } })
     expect(Input.value).toMatch('test')
@@ -33,7 +33,7 @@ describe('Reset Password Form', () => {
   it('should display error message if email have empty value', async () => {
     const { container } = render(<ResetPasswordForm />)
 
-    const Input = container.querySelector('input[name="email"]')
+    const Input = container.querySelector('input[name="email"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Reset/i)
@@ -48,7 +48,7 @@ describe('Reset Password Form', () => {
   it('should display error message if email have incorrect pattern', async () => {
     const { container } = render(<ResetPasswordForm />)
 
-    const Input = container.querySelector('input[name="email"]')
+    const Input = container.querySelector('input[name="email"]') as HTMLInputElement
     expect(Input.value).toMatch('')
     fireEvent.change(Input, { target: { value: 'test' } })
     expect(Input.value).toMatch('test')
@@ -65,7 +65,7 @@ describe('Reset Password Form', () => {
   it('should not display error when value is valid', async () => {
     const { container } = render(<ResetPasswordForm />)
 
-    const Email = container.querySelector('input[name="email"]')
+    const Email = container.querySelector('input[name="email"]') as HTMLInputElement
     fireEvent.change(Email, { target: { value: 'john@doe.com' } })
     const Button = screen.getByRole('button')
     expect(Button).toHaveTextContent(/Reset/i)

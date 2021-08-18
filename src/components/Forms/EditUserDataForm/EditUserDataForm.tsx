@@ -58,7 +58,6 @@ const EditUserDataForm = () => {
       }
     })
   }, [setIsLoggedIn])
-
   const notify = () =>
     toast('Your account has been successfully updated.', {
       position: 'top-center',
@@ -73,7 +72,7 @@ const EditUserDataForm = () => {
 
   const onSubmit = (data: any) => {
     fetchAsync('user', 'PUT', data).then(response => {
-      if (response.status) notify()
+      if (response.status === 200) notify()
       if (response.error) setBackendErrorMessage(response.error)
     })
   }
@@ -134,9 +133,9 @@ const EditUserDataForm = () => {
               </FormWrapper>
               <FormWrapper style={{ gridArea: '2/1/2/1' }}>
                 <Input
+                  id="email"
                   kind="medium"
                   name="email"
-                  id="email"
                   type="email"
                   autoComplete="email"
                   onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
@@ -155,9 +154,9 @@ const EditUserDataForm = () => {
               </FormWrapper>
               <FormWrapper style={{ gridArea: '2/2/2/2' }}>
                 <Input
+                  id="telephone"
                   kind="medium"
                   name="telephone"
-                  id="telephone"
                   type="tel"
                   autoComplete="tel"
                   onFocus={e => isInputFocus(e, isActive, setIsActive, true)}
