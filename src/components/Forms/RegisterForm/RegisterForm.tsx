@@ -151,7 +151,7 @@ const LoginForm: React.FC = () => {
             refForward={register({
               required: true,
               minLength: 8,
-              validate: value => value === password.current || 'The passwords do not match',
+              validate: value => value === watch('password') || 'The passwords do not match',
             })}
           />
           <Label htmlFor="passwordConfirm" kind="medium" isActive={isActive.passwordConfirm}>
