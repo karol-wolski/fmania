@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { IoMdBasket } from 'react-icons/io'
 import { Redirect } from 'react-router-dom'
-import CartEmpty from '../../components/CartEmpty/CartEmpty'
+import NoItems from '../../components/NoItems/NoItems'
 import CartPriceDetail from '../../components/CartPriceDetail/CartPriceDetail'
 import CartProductList from '../../components/CartProductList/CartProductList'
 import { getFromLocalStorage } from '../../helpers/localStorage'
@@ -35,7 +36,7 @@ const Cart: React.FC = () => {
     <>
       {isRedirect && <Redirect to="/checkout" />}
       {products === null ? (
-        <CartEmpty />
+        <NoItems text="Your cart is empty!" icon={<IoMdBasket />} />
       ) : (
         <Wrapper>
           <Products>

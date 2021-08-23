@@ -22,6 +22,7 @@ import Orders from './views/MyProfile/Orders/Orders'
 import MyProfile from './views/MyProfile/MyProfile'
 import { UserContext } from './context/UserContext'
 import isAuthorized from './helpers/isAuthorized'
+import SearchResult from './views/SearchResult/SearchResult'
 
 const displayBreadcrumbs = () => {
   const windowLocationPathname = window.location.pathname
@@ -60,6 +61,7 @@ const App = () => {
               <PrivateRoute exact path="/my_profile" component={MyProfile} />
               <PrivateRoute exact path="/my_profile/personal_information" component={PersonalInformation} />
               <PrivateRoute exact path="/my_profile/orders" component={Orders} />
+              <Route exact path="/search" component={SearchResult} />
               <Route exact path="/:gender/product-:product" component={ProductDetail} />
               <Route exact path="/:gender" component={Product} />
               <Route exact path="/:gender/:category" component={Product} />

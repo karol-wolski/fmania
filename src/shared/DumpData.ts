@@ -211,6 +211,7 @@ export const Products = [
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus mattis nisi, ut vehicula leo volutpat efficitur. Aliquam semper diam ac risus aliquam, ut finibus erat lacinia. Proin id ultricies lorem, a molestie nibh. Integer facilisis, elit sit amet sagittis ullamcorper, justo mauris auctor est, et suscipit turpis orci sed urna.',
+    sex: 'women',
   },
   {
     id: 2,
@@ -225,6 +226,7 @@ export const Products = [
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
       'Quisque maximus ut nibh sed rutrum. Aenean consequat sit amet augue eget pellentesque. Mauris facilisis dui lectus, quis commodo ante consectetur pellentesque. Sed pretium orci justo, quis vulputate quam molestie dignissim. Praesent massa ipsum, dignissim placerat orci quis, pulvinar pretium nunc. Etiam id pulvinar ipsum. Aliquam at arcu elementum, consectetur odio non, congue enim. ',
+    sex: 'women',
   },
   {
     id: 3,
@@ -238,6 +240,7 @@ export const Products = [
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
       'Aenean in turpis eu tortor lobortis sagittis vitae sed augue. Fusce ullamcorper porta mauris, vitae luctus odio dictum at. Proin augue ex, egestas at leo nec, cursus euismod nulla. Pellentesque vel erat nec elit pretium lobortis in et orci. Maecenas euismod lorem dui, et varius nulla pulvinar ut.',
+    sex: 'women',
   },
   {
     id: 4,
@@ -250,6 +253,7 @@ export const Products = [
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas finibus mattis nisi, ut vehicula leo volutpat efficitur. Aliquam semper diam ac risus aliquam, ut finibus erat lacinia. Proin id ultricies lorem, a molestie nibh. Integer facilisis, elit sit amet sagittis ullamcorper, justo mauris auctor est, et suscipit turpis orci sed urna.',
+    sex: 'women',
   },
   {
     id: 5,
@@ -264,6 +268,7 @@ export const Products = [
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
       'Quisque maximus ut nibh sed rutrum. Aenean consequat sit amet augue eget pellentesque. Mauris facilisis dui lectus, quis commodo ante consectetur pellentesque. Sed pretium orci justo, quis vulputate quam molestie dignissim. Praesent massa ipsum, dignissim placerat orci quis, pulvinar pretium nunc. Etiam id pulvinar ipsum. Aliquam at arcu elementum, consectetur odio non, congue enim. ',
+    sex: 'women',
   },
   {
     id: 6,
@@ -277,6 +282,7 @@ export const Products = [
     image: 'https://www.camille.co.uk/images/womens-white-floral-and-leaf-print-all-in-one-p3209-25166_thumb.jpg',
     desc:
       'Aenean in turpis eu tortor lobortis sagittis vitae sed augue. Fusce ullamcorper porta mauris, vitae luctus odio dictum at. Proin augue ex, egestas at leo nec, cursus euismod nulla. Pellentesque vel erat nec elit pretium lobortis in et orci. Maecenas euismod lorem dui, et varius nulla pulvinar ut.',
+    sex: 'women',
   },
 ]
 
