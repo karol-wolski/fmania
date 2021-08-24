@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/fmania/static/js/main.669928bd.chunk.js",
-    "main.js.map": "/fmania/static/js/main.669928bd.chunk.js.map",
+    "main.js": "/fmania/static/js/main.5b545dc4.chunk.js",
+    "main.js.map": "/fmania/static/js/main.5b545dc4.chunk.js.map",
     "runtime-main.js": "/fmania/static/js/runtime-main.1883d205.js",
     "runtime-main.js.map": "/fmania/static/js/runtime-main.1883d205.js.map",
     "static/css/2.abfdce53.chunk.css": "/fmania/static/css/2.abfdce53.chunk.css",
-    "static/js/2.c354ec37.chunk.js": "/fmania/static/js/2.c354ec37.chunk.js",
-    "static/js/2.c354ec37.chunk.js.map": "/fmania/static/js/2.c354ec37.chunk.js.map",
+    "static/js/2.cd524883.chunk.js": "/fmania/static/js/2.cd524883.chunk.js",
+    "static/js/2.cd524883.chunk.js.map": "/fmania/static/js/2.cd524883.chunk.js.map",
     "static/js/3.b368ac60.chunk.js": "/fmania/static/js/3.b368ac60.chunk.js",
     "static/js/3.b368ac60.chunk.js.map": "/fmania/static/js/3.b368ac60.chunk.js.map",
     "index.html": "/fmania/index.html",
     "static/css/2.abfdce53.chunk.css.map": "/fmania/static/css/2.abfdce53.chunk.css.map",
-    "static/js/2.c354ec37.chunk.js.LICENSE.txt": "/fmania/static/js/2.c354ec37.chunk.js.LICENSE.txt",
+    "static/js/2.cd524883.chunk.js.LICENSE.txt": "/fmania/static/js/2.cd524883.chunk.js.LICENSE.txt",
     "static/media/logo.c2627693.svg": "/fmania/static/media/logo.c2627693.svg",
     "static/media/mastercard.8f50a3e4.png": "/fmania/static/media/mastercard.8f50a3e4.png",
     "static/media/men.d5915497.jpg": "/fmania/static/media/men.d5915497.jpg",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.1883d205.js",
     "static/css/2.abfdce53.chunk.css",
-    "static/js/2.c354ec37.chunk.js",
-    "static/js/main.669928bd.chunk.js"
+    "static/js/2.cd524883.chunk.js",
+    "static/js/main.5b545dc4.chunk.js"
   ]
 }
