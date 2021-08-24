@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import Filters from '../../components/Filters/Filters'
 import Product from '../../components/Product/Product'
 import { convertArrayToString } from '../../helpers/convertArrayToString'
-import { GetProductPath } from '../../helpers/getProductPath'
+import { GetPath } from '../../helpers/getPath'
 import { getUniqueValueFromArray } from '../../helpers/getUniqueValueFromArray'
 import { request } from '../../helpers/request'
 import Spinner from '../../shared/Spinner/Spinner'
@@ -16,7 +16,7 @@ interface routerParam {
 
 const ProductPage: React.FC = () => {
   const { gender } = useParams<routerParam>()
-  const path = GetProductPath()
+  const path = GetPath()
   const [data, setData] = useState([])
   const [dataFilter, setDataFilter] = useState([])
   const [filterColorData, setFilterColorData] = useState<CheckboxType[]>([])

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { HeaderWrapper, Image, ButtonsWrapper, Input, Form, FormBtn } from './Header.styles'
+import { HeaderWrapper, Image, ButtonsWrapper } from './Header.styles'
 import Logo from '../../images/logo.svg'
 import { Button as LinkButton } from '../../shared/LinkButton/LinkButton'
-import { IoMdSearch, IoMdLogIn, IoMdPersonAdd, IoMdLogOut, IoMdPerson } from 'react-icons/io'
+import { IoMdLogIn, IoMdPersonAdd, IoMdLogOut, IoMdPerson } from 'react-icons/io'
 import { Button } from '../../shared/Button/Button'
 import { Logout } from '../../helpers/Logout'
 import { UserContext } from '../../context/UserContext'
+import SearchForm from '../Forms/SearchForm/SearchForm'
 
 const Header: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -25,13 +26,7 @@ const Header: React.FC = () => {
       <HeaderWrapper>
         <Image src={Logo} alt="" />
 
-        <Form action="#">
-          <Input type="search" name="" id="" placeholder="Search" />
-          <FormBtn>
-            <span className="sr-only">Search</span>
-            <IoMdSearch />
-          </FormBtn>
-        </Form>
+        <SearchForm />
 
         <ButtonsWrapper>
           {isLoggedIn ? (

@@ -8,7 +8,7 @@ interface ProductProps {
 }
 
 export const SingleProduct: React.FC<ProductProps> = ({ product }) => {
-  const { name, price, priceOld, sizes, image, desc, slug } = product
+  const { name, price, priceOld, sizes, image, desc, slug, sex } = product
 
   return (
     <Wrapper>
@@ -16,7 +16,7 @@ export const SingleProduct: React.FC<ProductProps> = ({ product }) => {
         <Image src={image} alt={name} />
       </ImageWrapper>
       <DetailWrapper>
-        <Name to={GetProductPath(`product-${slug}`)}>{name}</Name>
+        <Name to={GetProductPath(sex, slug)}>{name}</Name>
         <Price>
           ${price} {priceOld && <Price old>${priceOld}</Price>}
         </Price>

@@ -41,6 +41,7 @@ export type ProductType = {
   category?: string
   subcategory?: string
   color?: Color[] | string
+  sex: string
 }
 
 export type SingleProductType = {
