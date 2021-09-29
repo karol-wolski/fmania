@@ -101,9 +101,12 @@ describe('Review form', () => {
     expect(Button).toHaveTextContent(/Submit/i)
     expect(Button).toBeInTheDocument()
     fireEvent.submit(Button)
-    const toast = await waitFor(() =>
-      screen.getByText('The review has been successfully added. Soon your review will appear in the reviews section.'),
+    await waitFor(() =>
+      expect(
+        screen.getByText(
+          'The review has been successfully added. Soon your review will appear in the reviews section.',
+        ),
+      ).toBeInTheDocument(),
     )
-    expect(toast).toBeInTheDocument()
   })
 })
