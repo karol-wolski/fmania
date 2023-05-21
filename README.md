@@ -1,4 +1,4 @@
-# Fmania - ecommerce template
+# Fmania - ecommerce
 
 ## Table of contents
 
@@ -18,8 +18,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 The current status of the project can be seen by clicking on the link below. Wait a while on first run because the backend needs to wake up :)
 
 [See project](https://karol-wolski.github.io/fmania/)
-
-Project status: _in progress_
 
 ## Technologies and libraries
 
